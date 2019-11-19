@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:universal_html/prefer_universal/html.dart' as html;
 
 void main() => runApp(MyApp());
 
@@ -6,11 +7,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'App Report',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'App Report'),
     );
   }
 }
@@ -26,7 +27,31 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  void initState() {
+    _counter = checkLocal();
+    super.initState();
+  }
+
+  int checkLocal() {
+    try {
+      String storedCounter = html.window.localStorage['counter'];
+      if (storedCounter != null) {
+        return int.parse(storedCounter);
+      }
+    } catch (error) {
+      print("ERRORINIT:");
+      print(error);
+    }
+    return 0;
+  }
+
   void _incrementCounter() {
+    try {
+      html.window.localStorage['counter'] = (_counter + 1).toString();
+    } catch (error) {
+      print("ERRORINCREMENT:");
+      print(error);
+    }
     setState(() {
       _counter++;
     });
