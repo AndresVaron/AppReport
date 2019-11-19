@@ -1,87 +1,163 @@
 import 'package:flutter/material.dart';
-import 'package:universal_html/prefer_universal/html.dart' as html;
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc/bloc.dart';
 
-void main() => runApp(MyApp());
+import 'Temas/Tema1.dart';
+import 'connectivity/connectivity.dart';
+
+//Intercepta los eventos y estados del Bloc (Para debug,errores,etc.)
+class SimpleBlocDelegate extends BlocDelegate {
+  @override
+  void onEvent(Bloc bloc, Object event) {
+    super.onEvent(bloc, event);
+    print('bloc: ${bloc.runtimeType}, event: $event');
+  }
+
+  @override
+  void onTransition(Bloc bloc, Transition transition) {
+    super.onTransition(bloc, transition);
+    print('bloc: ${bloc.runtimeType}, transition: $transition');
+  }
+
+  @override
+  void onError(Bloc bloc, Object error, StackTrace stacktrace) {
+    super.onError(bloc, error, stacktrace);
+    print('bloc: ${bloc.runtimeType}, error: $error');
+  }
+}
+
+void main() async {
+  runApp(BlocProvider<ConnectivityBloc>(
+      builder: (context) {
+        return ConnectivityBloc()
+          ..add(LoadCacheEvent()); //Cargar los datos que se tienen guardados.
+      },
+      child: MyApp()));
+}
 
 class MyApp extends StatelessWidget {
+  final List<Tema> temas = <Tema>[
+    Tema(nombre: "Tema 1", id: "tema1", widget: new Tema1(nombre: "Tema 1")),
+    Tema(nombre: "Tema 2", id: "tema2", widget: new Tema1(nombre: "Tema 2")),
+    Tema(nombre: "Tema 3", id: "tema3", widget: new Tema1(nombre: "Tema 3")),
+    Tema(nombre: "Tema 4", id: "tema4", widget: new Tema1(nombre: "Tema 4")),
+    Tema(nombre: "Tema 5", id: "tema5", widget: new Tema1(nombre: "Tema 5")),
+    Tema(nombre: "Tema 6", id: "tema6", widget: new Tema1(nombre: "Tema 6")),
+    Tema(nombre: "Tema 7", id: "tema7", widget: new Tema1(nombre: "Tema 7")),
+    Tema(nombre: "Tema 8", id: "tema8", widget: new Tema1(nombre: "Tema 8")),
+    Tema(nombre: "Tema 9", id: "tema9", widget: new Tema1(nombre: "Tema 9")),
+    Tema(nombre: "Tema 10", id: "tema10", widget: new Tema1(nombre: "Tema 10")),
+  ];
+
   @override
   Widget build(BuildContext context) {
+    Map<String, WidgetBuilder> routes = {
+      '/': (context) => MyHomePage(title: 'App Report', temas: temas),
+    };
+    temas.forEach((tema) {
+      routes["/" + tema.id] = (context) => tema.widget;
+    });
     return MaterialApp(
       title: 'App Report',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'App Report'),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: routes,
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key key, this.title, this.temas}) : super(key: key);
   final String title;
+  final List<Tema> temas;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState(temas: temas);
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void initState() {
-    _counter = checkLocal();
-    super.initState();
-  }
-
-  int checkLocal() {
-    try {
-      String storedCounter = html.window.localStorage['counter'];
-      if (storedCounter != null) {
-        return int.parse(storedCounter);
-      }
-    } catch (error) {
-      print("ERRORINIT:");
-      print(error);
-    }
-    return 0;
-  }
-
-  void _incrementCounter() {
-    try {
-      html.window.localStorage['counter'] = (_counter + 1).toString();
-    } catch (error) {
-      print("ERRORINCREMENT:");
-      print(error);
-    }
-    setState(() {
-      _counter++;
-    });
-  }
+  final List<Tema> temas;
+  _MyHomePageState({this.temas});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
+        appBar: AppBar(
+          title: Text(widget.title),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
-    );
+        body: LayoutBuilder(builder: (context, constraints) {
+          double tamanhoTexto = 20; //CambiarEsto para tamano min en celular
+          if (constraints.maxWidth > 600) {
+            tamanhoTexto = (constraints.maxHeight /
+                20); //Cambiar esto para que quepan todos los titulos en web.
+          }
+          var children = <Widget>[
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                    left: constraints.maxWidth / 10,
+                    right: constraints.maxWidth / 10),
+                child: Container(
+                  width: constraints.maxWidth / 10 * 8,
+                  child: FlatButton(
+                    onPressed: () {},
+                    color: const Color(0xffbdbdbd),
+                    textColor: Colors.black,
+                    padding: const EdgeInsets.all(0.0),
+                    child: Container(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text('Cover',
+                          style: TextStyle(fontSize: tamanhoTexto)),
+                    ),
+                  ),
+                ),
+              )
+            ])
+          ];
+          temas.forEach((tema) {
+            children.add(SizedBox(
+              height: tamanhoTexto / 2,
+            ));
+            children.add(Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: constraints.maxWidth / 10,
+                        right: constraints.maxWidth / 10),
+                    child: Container(
+                      width: constraints.maxWidth / 10 * 8,
+                      child: FlatButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/' + tema.id);
+                        },
+                        color: const Color(0xffbdbdbd),
+                        textColor: Colors.black,
+                        padding: const EdgeInsets.all(0.0),
+                        child: Container(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(tema.nombre,
+                              style: TextStyle(fontSize: tamanhoTexto)),
+                        ),
+                      ),
+                    ),
+                  )
+                ]));
+          });
+          children.add(SizedBox(
+            height: tamanhoTexto / 2,
+          ));
+          return (ListView(children: children));
+        }));
   }
+}
+
+class Tema {
+  final String nombre;
+  final String id;
+  final Widget widget;
+  Tema({@required this.nombre, @required this.id, @required this.widget});
 }

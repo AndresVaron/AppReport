@@ -4,3 +4,5 @@ class BlocClickedEvent extends ConnectivityEvent {
   @override
   String toString() => 'BlocClickedEvent';
 }
+
+class LoadCacheEvent extends ConnectivityEvent {}
