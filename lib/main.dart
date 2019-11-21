@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc/bloc.dart';
 
@@ -27,27 +28,35 @@ class SimpleBlocDelegate extends BlocDelegate {
 }
 
 void main() async {
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey();
+
+  final List<Tema> temas = <Tema>[
+    Tema(nombre: "Tema 1", id: "tema1", widget: new Tema1()),
+    Tema(nombre: "Tema 2", id: "tema2", widget: new Tema1()),
+    Tema(nombre: "Tema 3", id: "tema3", widget: new Tema1()),
+    Tema(nombre: "Tema 4", id: "tema4", widget: new Tema1()),
+    Tema(nombre: "Tema 5", id: "tema5", widget: new Tema1()),
+    Tema(nombre: "Tema 6", id: "tema6", widget: new Tema1()),
+    Tema(nombre: "Tema 7", id: "tema7", widget: new Tema1()),
+    Tema(nombre: "Tema 8", id: "tema8", widget: new Tema1()),
+    Tema(nombre: "Tema 9", id: "tema9", widget: new Tema1()),
+    Tema(nombre: "Tema 10", id: "tema10", widget: new Tema1()),
+  ];
+  ConnectivityBloc connectivityBloc =
+      ConnectivityBloc(temas: temas, navigatorKey: _navigatorKey);
+  connectivityBloc.initialize();
+
   runApp(BlocProvider<ConnectivityBloc>(
       builder: (context) {
-        return ConnectivityBloc()
-          ..add(LoadCacheEvent()); //Cargar los datos que se tienen guardados.
+        return connectivityBloc; //Cargar los datos que se tienen guardados.
       },
-      child: MyApp()));
+      child: MyApp(temas, _navigatorKey)));
 }
 
 class MyApp extends StatelessWidget {
-  final List<Tema> temas = <Tema>[
-    Tema(nombre: "Tema 1", id: "tema1", widget: new Tema1(nombre: "Tema 1")),
-    Tema(nombre: "Tema 2", id: "tema2", widget: new Tema1(nombre: "Tema 2")),
-    Tema(nombre: "Tema 3", id: "tema3", widget: new Tema1(nombre: "Tema 3")),
-    Tema(nombre: "Tema 4", id: "tema4", widget: new Tema1(nombre: "Tema 4")),
-    Tema(nombre: "Tema 5", id: "tema5", widget: new Tema1(nombre: "Tema 5")),
-    Tema(nombre: "Tema 6", id: "tema6", widget: new Tema1(nombre: "Tema 6")),
-    Tema(nombre: "Tema 7", id: "tema7", widget: new Tema1(nombre: "Tema 7")),
-    Tema(nombre: "Tema 8", id: "tema8", widget: new Tema1(nombre: "Tema 8")),
-    Tema(nombre: "Tema 9", id: "tema9", widget: new Tema1(nombre: "Tema 9")),
-    Tema(nombre: "Tema 10", id: "tema10", widget: new Tema1(nombre: "Tema 10")),
-  ];
+  final List<Tema> temas;
+  final GlobalKey<NavigatorState> navigatorKey;
+  MyApp(this.temas, this.navigatorKey);
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +67,7 @@ class MyApp extends StatelessWidget {
       routes["/" + tema.id] = (context) => tema.widget;
     });
     return MaterialApp(
+      navigatorKey: navigatorKey,
       title: 'App Report',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -84,6 +94,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    ConnectivityBloc connectivityBloc =
+        BlocProvider.of<ConnectivityBloc>(context);
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
@@ -132,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: constraints.maxWidth / 10 * 8,
                       child: FlatButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/' + tema.id);
+                          connectivityBloc.add(LoadScreenEvent(tema.id));
                         },
                         color: const Color(0xffbdbdbd),
                         textColor: Colors.black,

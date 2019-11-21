@@ -1,8 +1,22 @@
+import 'package:flutter/material.dart';
+
 abstract class ConnectivityEvent {}
 
-class BlocClickedEvent extends ConnectivityEvent {
+class RefreshEvent extends ConnectivityEvent {
+  final String id;
+  RefreshEvent({@required this.id});
   @override
-  String toString() => 'BlocClickedEvent';
+  String toString() => 'RefreshEvent';
 }
 
-class LoadCacheEvent extends ConnectivityEvent {}
+class AddEvent extends ConnectivityEvent {
+  final String id;
+  AddEvent({@required this.id});
+  @override
+  String toString() => 'AddEvent';
+}
+
+class LoadScreenEvent extends ConnectivityEvent {
+  final String id;
+  LoadScreenEvent(this.id);
+}
