@@ -4,17 +4,17 @@ import 'package:universal_html/prefer_universal/html.dart' as html;
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
-class Tema1 extends StatefulWidget {
-  const Tema1({Key key}) : super(key: key);
+class LaApp extends StatefulWidget {
+  const LaApp({Key key}) : super(key: key);
   @override
-  Tema1State createState() => Tema1State();
+  LaAppState createState() => LaAppState();
 }
 
-class Tema1State extends State<Tema1> {
+class LaAppState extends State<LaApp> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   InfoTema contador;
   int con;
-  final String id = "tema1";
+  final String id = "laapp";
   final int index = 1;
   bool estabaOff = false;
 
@@ -52,18 +52,40 @@ class Tema1State extends State<Tema1> {
             ),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
+                padding: EdgeInsets.only(
+                    left: constraints.maxWidth / 10,
+                    right: constraints.maxWidth / 10),
+                child: Container(
+                  width: constraints.maxWidth / 10 * 8,
+                  child: Center(
+                      child: Text('La App',
+                          style: TextStyle(fontSize: tamanhoTexto * 1.5))),
+                ),
+              ),
+              SizedBox(
+                height: tamanhoTexto * 2,
+              ),
+            ]),
+          ];
+          //Aqui se agrega todo el contenido.
+
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
                 child: Container(
                   width: width,
-                  child: Center(
-                      child: Text('Tema 1',
-                          style: TextStyle(fontSize: tamanhoTexto * 1.5))),
+                  child: Text(
+                      '' +
+                          'Dado que esta aplicación fue desarrollada específicamente para el análisis de su transformación entre nativa y web, se tomaron las decisiones expresadas en las secciones a seguir.  ',
+                      style: TextStyle(fontSize: tamanhoTexto * 0.75)),
                 ),
-              )
+              ),
             ]),
-          ];
+          );
+
           children.add(SizedBox(
-            height: tamanhoTexto / 2,
+            height: tamanhoTexto,
           ));
           return (ListView(children: children));
         }),

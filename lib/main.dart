@@ -1,39 +1,13 @@
+import 'package:appreport/Temas/Temas.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bloc/bloc.dart';
-
-import 'Temas/Tema1.dart';
-import 'connectivity/connectivity.dart';
-
-//Intercepta los eventos y estados del Bloc (Para debug,errores,etc.)
-class SimpleBlocDelegate extends BlocDelegate {
-  @override
-  void onEvent(Bloc bloc, Object event) {
-    super.onEvent(bloc, event);
-    print('bloc: ${bloc.runtimeType}, event: $event');
-  }
-
-  @override
-  void onTransition(Bloc bloc, Transition transition) {
-    super.onTransition(bloc, transition);
-    print('bloc: ${bloc.runtimeType}, transition: $transition');
-  }
-
-  @override
-  void onError(Bloc bloc, Object error, StackTrace stacktrace) {
-    super.onError(bloc, error, stacktrace);
-    print('bloc: ${bloc.runtimeType}, error: $error');
-  }
-}
 
 void main() async {
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey();
 
   final List<Tema> temas = <Tema>[
     Tema(nombre: "Tema 1", id: "tema1", widget: new Tema1()),
-    Tema(nombre: "Tema 2", id: "tema2", widget: new Tema1()),
-    Tema(nombre: "Tema 3", id: "tema3", widget: new Tema1()),
+    Tema(nombre: "RoadBLOCks", id: "roadblocks", widget: new RoadBLOCks()),
+    Tema(nombre: "La App", id: "laapp", widget: new LaApp()),
     Tema(nombre: "Tema 4", id: "tema4", widget: new Tema1()),
     Tema(nombre: "Tema 5", id: "tema5", widget: new Tema1()),
     Tema(nombre: "Tema 6", id: "tema6", widget: new Tema1()),
@@ -42,15 +16,8 @@ void main() async {
     Tema(nombre: "Tema 9", id: "tema9", widget: new Tema1()),
     Tema(nombre: "Tema 10", id: "tema10", widget: new Tema1()),
   ];
-  ConnectivityBloc connectivityBloc =
-      ConnectivityBloc(temas: temas, navigatorKey: _navigatorKey);
-  connectivityBloc.initialize();
 
-  runApp(BlocProvider<ConnectivityBloc>(
-      builder: (context) {
-        return connectivityBloc; //Cargar los datos que se tienen guardados.
-      },
-      child: MyApp(temas, _navigatorKey)));
+  runApp(MyApp(temas, _navigatorKey));
 }
 
 class MyApp extends StatelessWidget {
@@ -94,8 +61,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    ConnectivityBloc connectivityBloc =
-        BlocProvider.of<ConnectivityBloc>(context);
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
@@ -107,6 +72,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 20); //Cambiar esto para que quepan todos los titulos en web.
           }
           var children = <Widget>[
+            SizedBox(
+              height: tamanhoTexto * 4,
+            ),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(
@@ -114,20 +82,95 @@ class _MyHomePageState extends State<MyHomePage> {
                     right: constraints.maxWidth / 10),
                 child: Container(
                   width: constraints.maxWidth / 10 * 8,
-                  child: FlatButton(
-                    onPressed: () {},
-                    color: const Color(0xffbdbdbd),
-                    textColor: Colors.black,
-                    padding: const EdgeInsets.all(0.0),
-                    child: Container(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text('Cover',
-                          style: TextStyle(fontSize: tamanhoTexto)),
-                    ),
-                  ),
+                  child: Center(
+                      child: Text('Flutter Web',
+                          style: TextStyle(fontSize: tamanhoTexto * 1.5))),
                 ),
               )
-            ])
+            ]),
+            SizedBox(
+              height: tamanhoTexto * 1.5,
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                    left: constraints.maxWidth / 10,
+                    right: constraints.maxWidth / 10),
+                child: Container(
+                  width: constraints.maxWidth / 10 * 8,
+                  child: Center(
+                      child: Text('Universidad de los Andes',
+                          style: TextStyle(fontSize: tamanhoTexto * 0.75))),
+                ),
+              )
+            ]),
+            SizedBox(
+              height: tamanhoTexto * 0.25,
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                    left: constraints.maxWidth / 10,
+                    right: constraints.maxWidth / 10),
+                child: Container(
+                  width: constraints.maxWidth / 10 * 8,
+                  child: Center(
+                      child: Text('Const. Aplicaciones Móviles',
+                          style: TextStyle(fontSize: tamanhoTexto * 0.75))),
+                ),
+              )
+            ]),
+            SizedBox(
+              height: tamanhoTexto * 0.5,
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                    left: constraints.maxWidth / 10,
+                    right: constraints.maxWidth / 10),
+                child: Container(
+                  width: constraints.maxWidth / 10 * 8,
+                  child: Center(
+                      child: Text('201920',
+                          style: TextStyle(fontSize: tamanhoTexto * 0.75))),
+                ),
+              )
+            ]),
+            SizedBox(
+              height: tamanhoTexto * 0.75,
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                    left: constraints.maxWidth / 10,
+                    right: constraints.maxWidth / 10),
+                child: Container(
+                  width: constraints.maxWidth / 10 * 8,
+                  child: Center(
+                      child: Text('Andres Varon y Leonel Naranjo',
+                          style: TextStyle(fontSize: tamanhoTexto * 0.75))),
+                ),
+              )
+            ]),
+            SizedBox(
+              height: tamanhoTexto * 1,
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                    left: constraints.maxWidth / 5,
+                    right: constraints.maxWidth / 5),
+                child: Container(
+                  width: constraints.maxWidth / 10 * 6,
+                  child: Text(
+                      '{INTRO} A Seguir, encontrará los temas analizados. ????',
+                      style: TextStyle(fontSize: tamanhoTexto * 0.5)),
+                ),
+              )
+            ]),
+            SizedBox(
+              height: tamanhoTexto * 1.25,
+            ),
           ];
           temas.forEach((tema) {
             children.add(SizedBox(
@@ -144,7 +187,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: constraints.maxWidth / 10 * 8,
                       child: FlatButton(
                         onPressed: () {
-                          connectivityBloc.add(LoadScreenEvent(tema.id));
+                          Navigator.pushNamed(context, "/" + tema.id);
                         },
                         color: const Color(0xffbdbdbd),
                         textColor: Colors.black,
