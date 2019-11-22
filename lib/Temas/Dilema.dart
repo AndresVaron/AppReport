@@ -5,17 +5,17 @@ import 'package:universal_html/prefer_universal/html.dart' as html;
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
-class RoadBLOCks extends StatefulWidget {
-  const RoadBLOCks({Key key}) : super(key: key);
+class Dilema extends StatefulWidget {
+  const Dilema({Key key}) : super(key: key);
   @override
-  RoadBLOCksState createState() => RoadBLOCksState();
+  DilemaState createState() => DilemaState();
 }
 
-class RoadBLOCksState extends State<RoadBLOCks> {
+class DilemaState extends State<Dilema> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   InfoTema contador;
   int con;
-  final String id = "roadblocks";
+  final String id = "dilema";
   final int index = 2;
   bool estabaOff = false;
 
@@ -37,6 +37,7 @@ class RoadBLOCksState extends State<RoadBLOCks> {
             ]),
         body: LayoutBuilder(builder: (context, constraints) {
           var largeScreen = constraints.maxWidth > 600 ? true : false;
+//CambiarEsto para tamano min en celular
           double tamanhoTexto = 20;
           double sidePadding = constraints.maxWidth / 10;
           double width = constraints.maxWidth / 10 * 8;
@@ -56,16 +57,15 @@ class RoadBLOCksState extends State<RoadBLOCks> {
                 child: Container(
                   width: width,
                   child: Center(
-                      child: Text('RoadBLOCs',
+                      child: Text('El Dilema del Desarrollo para Móviles',
                           style: TextStyle(fontSize: tamanhoTexto * 1.5))),
                 ),
-              )
+              ),
             ]),
             SizedBox(
-              height: tamanhoTexto,
+              height: tamanhoTexto * 1.5,
             ),
           ];
-
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
@@ -78,30 +78,14 @@ class RoadBLOCksState extends State<RoadBLOCks> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'Por el transcurso del la fase de desarrollo de esta aplicación, nosotros nos topamos con múltiples impedimentos.' +
-                                ' Entre estos estaban los que esperábamos, como la falta de soporte a los ',
-                            style: TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
-                                color: Colors.black),
-                          ),
-                          new TextSpan(
-                            text: 'Plugins Oficiales',
-                            style: new TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
-                                color: Colors.blue,
-                                decoration: TextDecoration.underline),
-                            recognizer: new TapGestureRecognizer()
-                              ..onTap = () {
-                                try {
-                                  html.window.open(
-                                      "https://github.com/flutter/plugins",
-                                      "_blank");
-                                } catch (error) {}
-                              },
-                          ),
-                          new TextSpan(
-                            text: ' que proveen el equipo de flutter o la inexistencia del serviceworker para configurar un PWA(Progressive Web App).\n\n' +
-                                'A pesar de esto, encontramos algunos errores bastante inesperados, como el de la imagen a seguir.',
+                            text: 'El desarrollo del proyecto flutter se centró en responder los problemas y dilemas de la industria en cuanto al desarrollo de aplicaciones móviles.' +
+                                '\n\nAl momento de construir una aplicación móvil una compañía deberá elegir entre desarrollarla de manera nativa o de manera cross-plaftorm.' +
+                                '\n\nUna Aplicación nativa se desarrolla en el lenguaje nativo para el S.O del dispositivo al cual está orientada la aplicación por lo que permite ' +
+                                'tener mayor rendimiento, acceder a todas las funcionalidades del dispositivo, pero genera mayores costos de desarrollo porque se debe crear una aplicación' +
+                                ' por cada S.O popular.\n\nEstos problemas en el desarrollo no son triviales de ninguna forma porque sumado a los costos monetarios también se incurre en' +
+                                ' retrasos, en una época en la que la entrega ágil de software es una prioridad para las compañías, por ejemplo, empresas como Google y Microsoft hacen uso' +
+                                ' de versiones canary que son versiones de sus populares navegadores Chrome y Edge que se actualizan con funcionalidades casi a diario. Esto les permite' +
+                                ' descubrir bugs, probar funcionalidades antes de mandar actualizaciones a sus aplicaciones y más populares. ',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
@@ -112,22 +96,6 @@ class RoadBLOCksState extends State<RoadBLOCks> {
               ),
             ]),
           );
-          children.add(SizedBox(
-            height: tamanhoTexto,
-          ));
-          children.add(
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Container(
-                    width: width,
-                    child: Image(image: AssetImage('images/orientation.jpeg'))),
-              ),
-            ]),
-          );
-          children.add(SizedBox(
-            height: tamanhoTexto,
-          ));
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
@@ -136,16 +104,15 @@ class RoadBLOCksState extends State<RoadBLOCks> {
                     width: width,
                     child: RichText(
                       softWrap: true,
-                      textAlign: TextAlign.justify,
+                      textAlign: TextAlign.center,
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'Este snippet se utiliza para indicar que la app tiene la orientación restringida y funciona tanto en Android como en iOS, ' +
-                                'por lo que fue inesperado que al incluirlo en nuestro código la pagina web no compilara. Esto es importante notarlo ya que en algunas ocasiones, dependiendo' +
-                                ' si la librería utilizada era de dart o flutter podrían salir errores diferentes tal como el de la imagen a seguir, que indica la la utilización de la función lookup() ' +
-                                '(de dart:io) la cual hace un nslookup , algo que no se puede hacer desde un browser.',
+                            text:
+                                '\nMcKinsey estima que 17 días es lo que puede tardarse mediante técnicas de devOps en lanzarse la primera versión de una aplicación móvil.\n',
                             style: TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
+                                fontSize: tamanhoTexto * 0.6,
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black),
                           ),
                         ],
@@ -154,89 +121,103 @@ class RoadBLOCksState extends State<RoadBLOCks> {
               ),
             ]),
           );
-          children.add(SizedBox(
-            height: tamanhoTexto,
-          ));
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Container(
-                    width: width,
-                    child: Image(image: AssetImage('images/lookup.png'))),
-              ),
-            ]),
-          );
-          children.add(SizedBox(
-            height: tamanhoTexto,
-          ));
-          children.add(
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Container(
-                    width: width,
-                    child: RichText(
-                      softWrap: true,
-                      textAlign: TextAlign.justify,
-                      text: new TextSpan(
-                        children: [
-                          new TextSpan(
-                            text: 'Además de estos problemas, los cuales se pueden consideran inofensivos ya que con tiempo se pueden implementar, se encontraron unos muchos complicados de entender y arreglar. ' +
-                                ' Estos son errores que solo logramos encontrar en el momento de hacerle el build de despliegue a la aplicación, ya que utilizando las herramientas de desarrollo de flutter web no se lograron encontrar. ' +
-                                ' Primero, esta el problema de los imports que se puede observar en la imagen a seguir.',
-                            style: TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
-                                color: Colors.black),
+                child: Center(
+                    child: Container(
+                        width: width,
+                        child: RichText(
+                          text: new TextSpan(
+                            children: [
+                              new TextSpan(
+                                text: 'https://www.google.com/chrome/canary/',
+                                style: new TextStyle(
+                                    fontSize: tamanhoTexto * 0.5,
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline),
+                                recognizer: new TapGestureRecognizer()
+                                  ..onTap = () {
+                                    try {
+                                      html.window.open(
+                                          "https://www.google.com/chrome/canary/",
+                                          "_blank");
+                                    } catch (error) {}
+                                  },
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    )),
+                        ))),
               ),
             ]),
           );
           children.add(SizedBox(
-            height: tamanhoTexto,
+            height: tamanhoTexto / 2,
           ));
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Container(
-                    width: width,
-                    child: Image(image: AssetImage('images/imports.jpeg'))),
-              ),
-            ]),
-          );
-          children.add(SizedBox(
-            height: tamanhoTexto,
-          ));
-          children.add(
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Container(
-                    width: width,
-                    child: RichText(
-                      text: new TextSpan(
-                        children: [
-                          new TextSpan(
-                            text: 'En este que ocurre al mandarle un parámetro al constructor de un widget un una clase diferente, indica que,en este caso, espera una lista de tipo Tema pero recibe una lista de tipo Tema' +
-                                '. Como se puede observar, la corrección no es para nada trivial ya que el problema está en que en un archivo la libreria(archivo main.dart) en la cual está la clase Tema se importa como \"lib/main.dart\" mientras que en el otro esta se importa como \"package:appreport/main.dart\". ' +
-                                ' Esto ocurre porque al parecer en el momento de generar el build de despliegue las referencias a las librerías tienen que ser idénticas a pesar de que en las herramientas de desarrollo y en las otras plataformas si pueden escribirse de maneras distintas mientras que apunten al mismo archivo. ' +
-                                'Lo irónico de todo es que el propio mensaje de error indica, entre comillas, que las librerías apuntan al mismo lugar (\"lib/main.dart\").\n\n' +
-                                'Finalmente, el mayor roadBLOCk de todos los que nos encontramos al desarrollar esta aplicación, los BLOCs. A pesar de que es un patrón increíble ya que le permite centralizar toda la lógica de la aplicación en unas pocas clases, la compilación de dart a  javascript por parte de el equipo de flutter de los' +
-                                'streams builders aun no funciona bien. Como se denotó en la sección donde se analiza esta compilación, la entrada y salida de los streams si funciona perfectamente, y en las herramientas de desarrollo todo funcionan como si se estuviera programando para cualquier plataforma. El lio, como con los imports, está en el momento de generar el build de despliegue ya que, ' +
-                                'a pesar de que se lograr compilar todo, al entrar a la pagina web la aplicación no logra encontrar los métodos de los objetos que representan los blocs en la aplicación y se terminan generando infinitos null pointers cuando un widget intenta hacer build().' +
-                                '\n\nDebido a este problema con los blocs y la restricción de tiempo para la entrega de este proyecto decidimos quitar el BLOC para el despliegue de la pagina web. Con este cambio, al ingresar a la pagina cada widget maneja el estado de su contador y acceso a internet. Es importante notar que el único feature que no terminó siendo desplegado en la pagina es el de que una acción en ' +
-                                ' cualquiera de las secciones actualiza el servidor con el cache de todos los otros temas. Esto si funciona en navegador con el servidor de desarrollo y en la aplicación nativa',
-                            style: TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
-                                color: Colors.black),
+                child: Center(
+                    child: Container(
+                        width: width,
+                        child: RichText(
+                          text: new TextSpan(
+                            children: [
+                              new TextSpan(
+                                text:
+                                    'https://www.mckinsey.com/business-functions/mckinsey-digital/our-insights/beyond-agile-reorganizing-it-for-faster-software-delivery',
+                                style: new TextStyle(
+                                    fontSize: tamanhoTexto * 0.5,
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline),
+                                recognizer: new TapGestureRecognizer()
+                                  ..onTap = () {
+                                    try {
+                                      html.window.open(
+                                          "https://www.mckinsey.com/business-functions/mckinsey-digital/our-insights/beyond-agile-reorganizing-it-for-faster-software-delivery",
+                                          "_blank");
+                                    } catch (error) {}
+                                  },
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    )),
+                        ))),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto / 2,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Center(
+                    child: Container(
+                        width: width,
+                        child: RichText(
+                          text: new TextSpan(
+                            children: [
+                              new TextSpan(
+                                text: 'https://www.atlassian.com/devops',
+                                style: new TextStyle(
+                                    fontSize: tamanhoTexto * 0.5,
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline),
+                                recognizer: new TapGestureRecognizer()
+                                  ..onTap = () {
+                                    try {
+                                      html.window.open(
+                                          "https://www.atlassian.com/devops",
+                                          "_blank");
+                                    } catch (error) {}
+                                  },
+                              ),
+                            ],
+                          ),
+                        ))),
               ),
             ]),
           );

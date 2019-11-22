@@ -5,16 +5,58 @@ void main() async {
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey();
 
   final List<Tema> temas = <Tema>[
-    Tema(nombre: "Tema 1", id: "tema1", widget: new Tema1()),
-    Tema(nombre: "RoadBLOCks", id: "roadblocks", widget: new RoadBLOCks()),
-    Tema(nombre: "La App", id: "laapp", widget: new LaApp()),
-    Tema(nombre: "Tema 4", id: "tema4", widget: new Tema1()),
-    Tema(nombre: "Tema 5", id: "tema5", widget: new Tema1()),
-    Tema(nombre: "Tema 6", id: "tema6", widget: new Tema1()),
-    Tema(nombre: "Tema 7", id: "tema7", widget: new Tema1()),
-    Tema(nombre: "Tema 8", id: "tema8", widget: new Tema1()),
-    Tema(nombre: "Tema 9", id: "tema9", widget: new Tema1()),
-    Tema(nombre: "Tema 10", id: "tema10", widget: new Tema1()),
+    Tema(nombre: "¿Flutter?", id: "flutter", widget: new Flutter()),
+    Tema(
+        nombre: "El Dilema del Desarrollo para Móviles",
+        id: "dilema",
+        widget: new Dilema()),
+    Tema(
+        nombre: "Competidores en Cross-Platform",
+        id: "competidores",
+        widget: new Competidores()),
+    Tema(
+        nombre: "El Punto de Vista de Google",
+        id: "google",
+        widget: new Google()),
+    Tema(nombre: "Dart", id: "dart", widget: new Dart()),
+    //Lo que falte..
+    //TODO:
+    Tema(
+        nombre: "La App",
+        id: "laapp",
+        widget: new LaApp()), //En general que es.
+    Tema(
+        nombre: "Patrones",
+        id: "patrones",
+        widget: new Tema1()), //Explicar bloc, como se implemento y pa que.
+    Tema(
+        nombre: "Performance",
+        id: "performance",
+        widget:
+            new Tema1()), //Sacar la grafica, y explicar que le falta con los detalles
+    Tema(
+        nombre: "Almacenamiento",
+        id: "almacenamiento",
+        widget: new Tema1()), //Sharepref, cache y que falta por mejorar.
+    Tema(
+        nombre: "Conectividad Eventual",
+        id: "conectividad",
+        widget:
+            new Tema1()), //Explicar la utilizacion de html y connectivity plugin.
+    Tema(
+        nombre: "Seguridad",
+        id: "seguridad",
+        widget: new Tema1()), //Explicar el api. las peticiones. etc.
+    Tema(
+        nombre: "Ux/Ui",
+        id: "uxui",
+        widget:
+            new Tema1()), //Explicar que como es google, se usa mas que todo material. ux falta por mejorar bastante.(Movil/web)
+    Tema(
+        nombre: "RoadBLOCks",
+        id: "roadblocks",
+        widget: new RoadBLOCks()), //Falta mostrar los gifs.
+    Tema(nombre: "Conclusiones", id: "conclusiones", widget: new Tema1()),
   ];
 
   runApp(MyApp(temas, _navigatorKey));
@@ -163,7 +205,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Container(
                   width: constraints.maxWidth / 10 * 6,
                   child: Text(
-                      '{INTRO} A Seguir, encontrará los temas analizados. ????',
+                      'Seleccione un tema a seguir para obtener más información.',
                       style: TextStyle(fontSize: tamanhoTexto * 0.5)),
                 ),
               )

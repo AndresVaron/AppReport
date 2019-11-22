@@ -5,18 +5,18 @@ import 'package:universal_html/prefer_universal/html.dart' as html;
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
-class RoadBLOCks extends StatefulWidget {
-  const RoadBLOCks({Key key}) : super(key: key);
+class Dart extends StatefulWidget {
+  const Dart({Key key}) : super(key: key);
   @override
-  RoadBLOCksState createState() => RoadBLOCksState();
+  DartState createState() => DartState();
 }
 
-class RoadBLOCksState extends State<RoadBLOCks> {
+class DartState extends State<Dart> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   InfoTema contador;
   int con;
-  final String id = "roadblocks";
-  final int index = 2;
+  final String id = "dart";
+  final int index = 5;
   bool estabaOff = false;
 
   @override
@@ -37,6 +37,7 @@ class RoadBLOCksState extends State<RoadBLOCks> {
             ]),
         body: LayoutBuilder(builder: (context, constraints) {
           var largeScreen = constraints.maxWidth > 600 ? true : false;
+//CambiarEsto para tamano min en celular
           double tamanhoTexto = 20;
           double sidePadding = constraints.maxWidth / 10;
           double width = constraints.maxWidth / 10 * 8;
@@ -56,15 +57,126 @@ class RoadBLOCksState extends State<RoadBLOCks> {
                 child: Container(
                   width: width,
                   child: Center(
-                      child: Text('RoadBLOCs',
-                          style: TextStyle(fontSize: tamanhoTexto * 1.5))),
+                      child: Text('¿Por Qué Dart? ',
+                          style: TextStyle(fontSize: tamanhoTexto * 1.25))),
                 ),
-              )
+              ),
             ]),
             SizedBox(
-              height: tamanhoTexto,
+              height: tamanhoTexto * 1.5,
             ),
           ];
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.justify,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text: 'Dart es el lenguaje sobre el que funciona el Flutter. Dart está optimizado para el desarrollo del lado del cliente.  En el que la UI se escribe como código y no como un lenguaje' +
+                                ' de marcado. Que además ya viene intencionado para ser portable.\n\nEl tipo de compilador de DART es AOT lo cual permite que Flutter se comunique ' +
+                                'con la plataforma sin pasar por un puente JavaScript que hace un cambio de contexto.\n\nSin embargo, también puede ser compilada como JavaScript para ' +
+                                'correr en la mayoría de los lenguajes, Como stand-alone en los equipos que tienen el SDK de Dart.\n\nEl 5 de noviembre Dart anuncio que dart2native permitiría compilar Dart ' +
+                                'a ejecutables autocontenidos para los sistemas operativos Linux, MacOs y Windows.\n\nFinalmente cabe notar que Dart se basa en el principio de tree shaking lo que significa' +
+                                ' que al momento de compilar va a eliminar el código muerto es decir el que no se está usando. Dart puede transpilar opcionalmente a JavaScript utilizando la librería ',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.black),
+                          ),
+                          new TextSpan(
+                            text: 'Dart2Js',
+                            style: new TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.blue,
+                                decoration: TextDecoration.underline),
+                            recognizer: new TapGestureRecognizer()
+                              ..onTap = () {
+                                try {
+                                  html.window.open(
+                                      "https://dart.dev/tools/dart2js",
+                                      "_blank");
+                                } catch (error) {}
+                              },
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.center,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text: '¿Que Trae Flutter a la Fiesta?',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
+            ]),
+          );
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.justify,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text:
+                                'Con tantas funcionalidades orientadas al desarrollo multiplataforma cabe preguntarse ¿Por Qué Flutter? \n\nTrae Hot-Reload cuando se está en modo desarrollo, lo que significa que no se hace la compilación AOT sino que la hace JIT para que los cambios se vean reflejados de manera instantánea. ',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
+            ]),
+          );
+
+          children.add(SizedBox(
+            height: tamanhoTexto,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: Image(image: AssetImage('images/hotreload.png'))),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto,
+          ));
 
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
@@ -78,30 +190,9 @@ class RoadBLOCksState extends State<RoadBLOCks> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'Por el transcurso del la fase de desarrollo de esta aplicación, nosotros nos topamos con múltiples impedimentos.' +
-                                ' Entre estos estaban los que esperábamos, como la falta de soporte a los ',
-                            style: TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
-                                color: Colors.black),
-                          ),
-                          new TextSpan(
-                            text: 'Plugins Oficiales',
-                            style: new TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
-                                color: Colors.blue,
-                                decoration: TextDecoration.underline),
-                            recognizer: new TapGestureRecognizer()
-                              ..onTap = () {
-                                try {
-                                  html.window.open(
-                                      "https://github.com/flutter/plugins",
-                                      "_blank");
-                                } catch (error) {}
-                              },
-                          ),
-                          new TextSpan(
-                            text: ' que proveen el equipo de flutter o la inexistencia del serviceworker para configurar un PWA(Progressive Web App).\n\n' +
-                                'A pesar de esto, encontramos algunos errores bastante inesperados, como el de la imagen a seguir.',
+                            text: 'El layout realizado por flutter hace uso de Los Widgets que proporciona Flutter  que no son los DOM webViews sino que son propios de flutter, ' +
+                                'razón por la cual, comparado con el  layout tradicional que tiene muchas reglas que entran en conflicto entre si y lleva a una complejidad de N cuadrado, ' +
+                                'implica que flutter tiene una solución más simple pero que según Google no va en decrimento de las metáforas ni del rendimiento visual. ',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
@@ -121,13 +212,14 @@ class RoadBLOCksState extends State<RoadBLOCks> {
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
                 child: Container(
                     width: width,
-                    child: Image(image: AssetImage('images/orientation.jpeg'))),
+                    child: Image(image: AssetImage('images/flutterfm.png'))),
               ),
             ]),
           );
           children.add(SizedBox(
             height: tamanhoTexto,
           ));
+
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
@@ -140,10 +232,10 @@ class RoadBLOCksState extends State<RoadBLOCks> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'Este snippet se utiliza para indicar que la app tiene la orientación restringida y funciona tanto en Android como en iOS, ' +
-                                'por lo que fue inesperado que al incluirlo en nuestro código la pagina web no compilara. Esto es importante notarlo ya que en algunas ocasiones, dependiendo' +
-                                ' si la librería utilizada era de dart o flutter podrían salir errores diferentes tal como el de la imagen a seguir, que indica la la utilización de la función lookup() ' +
-                                '(de dart:io) la cual hace un nslookup , algo que no se puede hacer desde un browser.',
+                            text: 'Esperamos con la experimentación poder responder, si: \n¿El layout de flutter hace que las metáforas y el UI tenga menos posibilidades?\n\nRespondiendo ' +
+                                'antes de tiempo se puede decir que Flutter viene con conjuntos de Widgets para Android y IOS, ¿serán estos suficientes?\n\nPero no todo son ventajas el ' +
+                                'hecho de que cada aplicación venga con sus propios widgets hace que el tamaño de las aplicaciones comience en 4,7 MB.\n\nPor lo que otra buena pregunta a' +
+                                ' responder en el informe es: \n',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
@@ -154,22 +246,6 @@ class RoadBLOCksState extends State<RoadBLOCks> {
               ),
             ]),
           );
-          children.add(SizedBox(
-            height: tamanhoTexto,
-          ));
-          children.add(
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Container(
-                    width: width,
-                    child: Image(image: AssetImage('images/lookup.png'))),
-              ),
-            ]),
-          );
-          children.add(SizedBox(
-            height: tamanhoTexto,
-          ));
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
@@ -178,15 +254,15 @@ class RoadBLOCksState extends State<RoadBLOCks> {
                     width: width,
                     child: RichText(
                       softWrap: true,
-                      textAlign: TextAlign.justify,
+                      textAlign: TextAlign.center,
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'Además de estos problemas, los cuales se pueden consideran inofensivos ya que con tiempo se pueden implementar, se encontraron unos muchos complicados de entender y arreglar. ' +
-                                ' Estos son errores que solo logramos encontrar en el momento de hacerle el build de despliegue a la aplicación, ya que utilizando las herramientas de desarrollo de flutter web no se lograron encontrar. ' +
-                                ' Primero, esta el problema de los imports que se puede observar en la imagen a seguir.',
+                            text:
+                                '¿El peso de las aplicaciones de flutter se vera reducido en las PWA creadas con flutter o por el contrario el serviceworker se sobrecargará?\n',
                             style: TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
+                                fontSize: tamanhoTexto * 0.6,
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black),
                           ),
                         ],
@@ -202,41 +278,104 @@ class RoadBLOCksState extends State<RoadBLOCks> {
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Container(
-                    width: width,
-                    child: Image(image: AssetImage('images/imports.jpeg'))),
+                child: Center(
+                    child: Container(
+                        width: width,
+                        child: RichText(
+                          text: new TextSpan(
+                            children: [
+                              new TextSpan(
+                                text:
+                                    'https://dart.dev/guides/language/language-tour#important-concepts',
+                                style: new TextStyle(
+                                    fontSize: tamanhoTexto * 0.5,
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline),
+                                recognizer: new TapGestureRecognizer()
+                                  ..onTap = () {
+                                    try {
+                                      html.window.open(
+                                          "https://dart.dev/guides/language/language-tour#important-concepts",
+                                          "_blank");
+                                    } catch (error) {}
+                                  },
+                              ),
+                            ],
+                          ),
+                        ))),
               ),
             ]),
           );
           children.add(SizedBox(
-            height: tamanhoTexto,
+            height: tamanhoTexto / 2,
+          ));
+          children.add(SizedBox(
+            height: tamanhoTexto / 2,
           ));
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Container(
-                    width: width,
-                    child: RichText(
-                      text: new TextSpan(
-                        children: [
-                          new TextSpan(
-                            text: 'En este que ocurre al mandarle un parámetro al constructor de un widget un una clase diferente, indica que,en este caso, espera una lista de tipo Tema pero recibe una lista de tipo Tema' +
-                                '. Como se puede observar, la corrección no es para nada trivial ya que el problema está en que en un archivo la libreria(archivo main.dart) en la cual está la clase Tema se importa como \"lib/main.dart\" mientras que en el otro esta se importa como \"package:appreport/main.dart\". ' +
-                                ' Esto ocurre porque al parecer en el momento de generar el build de despliegue las referencias a las librerías tienen que ser idénticas a pesar de que en las herramientas de desarrollo y en las otras plataformas si pueden escribirse de maneras distintas mientras que apunten al mismo archivo. ' +
-                                'Lo irónico de todo es que el propio mensaje de error indica, entre comillas, que las librerías apuntan al mismo lugar (\"lib/main.dart\").\n\n' +
-                                'Finalmente, el mayor roadBLOCk de todos los que nos encontramos al desarrollar esta aplicación, los BLOCs. A pesar de que es un patrón increíble ya que le permite centralizar toda la lógica de la aplicación en unas pocas clases, la compilación de dart a  javascript por parte de el equipo de flutter de los' +
-                                'streams builders aun no funciona bien. Como se denotó en la sección donde se analiza esta compilación, la entrada y salida de los streams si funciona perfectamente, y en las herramientas de desarrollo todo funcionan como si se estuviera programando para cualquier plataforma. El lio, como con los imports, está en el momento de generar el build de despliegue ya que, ' +
-                                'a pesar de que se lograr compilar todo, al entrar a la pagina web la aplicación no logra encontrar los métodos de los objetos que representan los blocs en la aplicación y se terminan generando infinitos null pointers cuando un widget intenta hacer build().' +
-                                '\n\nDebido a este problema con los blocs y la restricción de tiempo para la entrega de este proyecto decidimos quitar el BLOC para el despliegue de la pagina web. Con este cambio, al ingresar a la pagina cada widget maneja el estado de su contador y acceso a internet. Es importante notar que el único feature que no terminó siendo desplegado en la pagina es el de que una acción en ' +
-                                ' cualquiera de las secciones actualiza el servidor con el cache de todos los otros temas. Esto si funciona en navegador con el servidor de desarrollo y en la aplicación nativa',
-                            style: TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
-                                color: Colors.black),
+                child: Center(
+                    child: Container(
+                        width: width,
+                        child: RichText(
+                          text: new TextSpan(
+                            children: [
+                              new TextSpan(
+                                text:
+                                    'https://thehistoryoftheweb.com/the-story-of-flash/',
+                                style: new TextStyle(
+                                    fontSize: tamanhoTexto * 0.5,
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline),
+                                recognizer: new TapGestureRecognizer()
+                                  ..onTap = () {
+                                    try {
+                                      html.window.open(
+                                          "https://thehistoryoftheweb.com/the-story-of-flash/",
+                                          "_blank");
+                                    } catch (error) {}
+                                  },
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    )),
+                        ))),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto / 2,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Center(
+                    child: Container(
+                        width: width,
+                        child: RichText(
+                          text: new TextSpan(
+                            children: [
+                              new TextSpan(
+                                text:
+                                    'https://codeburst.io/react-native-vs-nativescript-vs-xamarin-vs-Flutter-vs-ionic-vs-cordova-vs-pwas-196810954450',
+                                style: new TextStyle(
+                                    fontSize: tamanhoTexto * 0.5,
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline),
+                                recognizer: new TapGestureRecognizer()
+                                  ..onTap = () {
+                                    try {
+                                      html.window.open(
+                                          "https://codeburst.io/react-native-vs-nativescript-vs-xamarin-vs-Flutter-vs-ionic-vs-cordova-vs-pwas-196810954450",
+                                          "_blank");
+                                    } catch (error) {}
+                                  },
+                              ),
+                            ],
+                          ),
+                        ))),
               ),
             ]),
           );

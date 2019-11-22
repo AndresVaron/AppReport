@@ -1,3 +1,8 @@
+export './Flutter.dart';
+export './Dilema.dart';
+export './Competidores.dart';
+export './Google.dart';
+export './Dart.dart';
 export './LaApp.dart';
 export './Tema1.dart';
 export './RoadBLOCks.dart';
@@ -18,7 +23,8 @@ bool hasConnection() {
   return html.window.navigator.onLine;
 }
 
-Future<http.Response> upVote(InfoTema contador) {
+Future<http.Response> upVote(InfoTema contador) async {
+  print(contador);
   return http.get(
       'https://script.google.com/macros/s/AKfycbxdkQD1GDUJdnqqfcz6AQ-VqfeGqr11xppX3ucAkaA-4qKwmSU/exec?index=' +
           contador.index.toString() +
@@ -26,7 +32,7 @@ Future<http.Response> upVote(InfoTema contador) {
           contador.contadorTemp.toString());
 }
 
-Future<http.Response> update(String index) {
+Future<http.Response> update(String index) async {
   return http.get(
       'https://script.google.com/macros/s/AKfycbxdkQD1GDUJdnqqfcz6AQ-VqfeGqr11xppX3ucAkaA-4qKwmSU/exec?tema=' +
           index);

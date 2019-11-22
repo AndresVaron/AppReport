@@ -80,7 +80,7 @@ class Tema1State extends State<Tema1> {
   void initState() {
     super.initState();
     //Se carga el cache
-    contador = InfoTema(index: 1, contador: 0, contadorTemp: 0);
+    contador = InfoTema(index: index, contador: 0, contadorTemp: 0);
     try {
       String storedCounter = html.window.localStorage[id];
       if (storedCounter != null) {
