@@ -16,7 +16,7 @@ class LaAppState extends State<LaApp> {
   InfoTema contador;
   int con;
   final String id = "laapp";
-  final int index = 1; //TODO
+  final int index = 6; //TODO
   bool estabaOff = false;
 
   @override

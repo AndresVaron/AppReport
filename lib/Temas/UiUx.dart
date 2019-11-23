@@ -16,7 +16,7 @@ class UiUxState extends State<UiUx> {
   InfoTema contador;
   int con;
   final String id = "uiux";
-  final int index = 1; //TODO
+  final int index = 12; //TODO
   bool estabaOff = false;
 
   @override

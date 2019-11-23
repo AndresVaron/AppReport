@@ -16,7 +16,7 @@ class AlmacenamientoState extends State<Almacenamiento> {
   InfoTema contador;
   int con;
   final String id = "almacenamiento";
-  final int index = 1; //TODO
+  final int index = 9; //TODO
   bool estabaOff = false;
 
   @override

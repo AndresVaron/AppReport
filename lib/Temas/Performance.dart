@@ -16,7 +16,7 @@ class PerformanceState extends State<Performance> {
   InfoTema contador;
   int con;
   final String id = "performance";
-  final int index = 1; //TODO
+  final int index = 8; //TODO
   bool estabaOff = false;
 
   @override
