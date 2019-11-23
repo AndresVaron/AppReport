@@ -5,17 +5,17 @@ import 'package:universal_html/prefer_universal/html.dart' as html;
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
-class LaApp extends StatefulWidget {
-  const LaApp({Key key}) : super(key: key);
+class Almacenamiento extends StatefulWidget {
+  const Almacenamiento({Key key}) : super(key: key);
   @override
-  LaAppState createState() => LaAppState();
+  AlmacenamientoState createState() => AlmacenamientoState();
 }
 
-class LaAppState extends State<LaApp> {
+class AlmacenamientoState extends State<Almacenamiento> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   InfoTema contador;
   int con;
-  final String id = "laapp";
+  final String id = "almacenamiento";
   final int index = 1; //TODO
   bool estabaOff = false;
 
@@ -59,7 +59,7 @@ class LaAppState extends State<LaApp> {
                 child: Container(
                   width: constraints.maxWidth / 10 * 8,
                   child: Center(
-                      child: Text('La App',
+                      child: Text('Almacenamiento',
                           style: TextStyle(fontSize: tamanhoTexto * 1.5))),
                 ),
               ),
@@ -74,13 +74,36 @@ class LaAppState extends State<LaApp> {
               Padding(
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
                 child: Container(
-                  width: width,
-                  child: Text(
-                      '' +
-                          'Dado que esta aplicación fue desarrollada específicamente para el análisis de su transformación entre nativa y web, es importante notar que algunas de las' +
-                          ' decisiones tomas durante el desarrollo de estas fueron específicamente para poder analizarla.\n',
-                      style: TextStyle(fontSize: tamanhoTexto * 0.75)),
-                ),
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.justify,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text:
+                                'Debido a que uno de los propósitos de esta app es que fuera una PWA, y que a pesar de que Flutter lo vende',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.black),
+                          ),
+                          new TextSpan(
+                            text:
+                                ' en su pagina principal(https://flutter.dev/web) como si fuera un feature ya implementado, como se puede observar en la ultima linea de https://flutter.dev/docs/deployment/web',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.black),
+                          ),
+                          new TextSpan(
+                            text: ', los archivos de configuración de una PWA aun no se generan. Dicho esto, para desarrollar esta aplicación y ' +
+                                'poder considerar el producto final una PWA, para la versión web se implemento un manejo del cache del browser. Este almacenamiento local de los "Ups" se puede observar en las siguientes imágenes.',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )),
               ),
             ]),
           );
@@ -90,21 +113,17 @@ class LaAppState extends State<LaApp> {
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
                 child: Container(
                     width: width,
-                    child: RichText(
-                      softWrap: true,
-                      textAlign: TextAlign.center,
-                      text: new TextSpan(
-                        children: [
-                          new TextSpan(
-                            text: 'Propósito',
-                            style: TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                          ),
-                        ],
-                      ),
-                    )),
+                    child: Image(image: AssetImage('images/storage.jpeg'))),
+              ),
+            ]),
+          );
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: Image(image: AssetImage('images/storagesave.jpeg'))),
               ),
             ]),
           );
@@ -120,11 +139,41 @@ class LaAppState extends State<LaApp> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'El propósito de esta app/pagina, además de ser un ejemplo para analizar, es describir el proceso por el cual pasamos para desarrollarla. Como puede notar, esta está' +
-                                'dividida en secciones, tal que entre ellas se abordan los principales temas el el curso de Constr. de Aplicaciones Móviles de la Universidad de Los Andes.' +
-                                'Además de esto, cada sección contiene un contador de "Ups" que se almacenan en una base de datos centralizada de la cual se informará mas en la secciones posteriores. ' +
-                                'Esto se hizo para poder desarrollarla como una PWA y así poder entender mejor las ventajas y desventajas de estas sobre las aplicaciones nativas. \n\n' +
-                                'Dicho esto, en las siguientes secciones se destacan las decisiones tomadas, cuando necesarias, en el desarrollo para que cada aspecto de la aplicación se pudiera observar en las dos plataformas destino con el mismo código fuente.\n\n',
+                            text: 'Además, en estas imágenes se puede observar que es utilizó la libreria de shared_preferences para el almacenamiento en las nativas. Lo ideal sería que en un futuro Flutter le ' +
+                                'implemente a shared_preferences el manejo del cache del browser ya que las dos cosas consisten en guardar una tupla (llave,valor) en la memoria del dispositivo.' +
+                                'Para esta ocasión se utilizo local_storage en el browser ya que esta es la manera que mas tiempo dura guardada en el browser.\n\n Es importante notar que para esto fue necesario utilizar la libreria de dart:html que nos permite manipular los componentes de una pagina web. ' +
+                                'En un futuro, esto no se debería poder hacer, ya que esto implica que se ramifique el código de la aplicación en sus respectivos formatos(web,móvil,etc).', //Problemas de html y hablar de la bd
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto * 2,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.justify,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text: 'Por otro lado, para facilitar el acceso a la información, se creo una pequeña base de datos de contadores a la cual la aplicación accede para aumentar los contadores y preguntar el ' +
+                                'estado de estos. Esta base de datos se puede encontrar en un spreadsheet de google drive.Cualquiera puede acceder a esta y verificar que si está conectada con la aplicación.' +
+                                '\n\nConsecuentemente, al hablar de almacenamiento es importante tener en cuenta de que al instalarla en un dispositivo las imágenes del documento se van junto.' +
+                                ' Mientras que en la pagina estas quedan guardadas en el servidor que y el almacenamiento de estas sobre el dispositivo depende plenamente del navegador.' +
+                                '\n\nFinalmente, cabe notar que a pesar de que Chrome móvil tiene una opción de guardar la pagina para su uso offline la mayoría de las funcionalidades se pierden junto con los' +
+                                ' iconos de flutter.',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
@@ -139,42 +188,12 @@ class LaAppState extends State<LaApp> {
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Center(
-                    child: Container(
-                        width: width,
-                        child: RichText(
-                          text: new TextSpan(
-                            children: [
-                              new TextSpan(
-                                text: 'Aquí',
-                                style: new TextStyle(
-                                    fontSize: tamanhoTexto * 0.75,
-                                    color: Colors.blue,
-                                    decoration: TextDecoration.underline),
-                                recognizer: new TapGestureRecognizer()
-                                  ..onTap = () {
-                                    try {
-                                      html.window.open(
-                                          "https://github.com/AndresVaron/AppReport-mov",
-                                          "_blank");
-                                    } catch (error) {}
-                                  },
-                              ),
-                              new TextSpan(
-                                text: ' encontrará el repositorio con BLoC.',
-                                style: TextStyle(
-                                    fontSize: tamanhoTexto * 0.75,
-                                    color: Colors.black),
-                              ),
-                            ],
-                          ),
-                        ))),
+                child: Container(
+                    width: width,
+                    child: Image(image: AssetImage('images/db.jpeg'))),
               ),
             ]),
           );
-          children.add(SizedBox(
-            height: tamanhoTexto / 2,
-          ));
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
@@ -188,24 +207,88 @@ class LaAppState extends State<LaApp> {
                               new TextSpan(
                                 text: 'Aquí',
                                 style: new TextStyle(
-                                    fontSize: tamanhoTexto * 0.75,
+                                    fontSize: tamanhoTexto * 0.6,
                                     color: Colors.blue,
                                     decoration: TextDecoration.underline),
                                 recognizer: new TapGestureRecognizer()
                                   ..onTap = () {
                                     try {
                                       html.window.open(
-                                          "https://github.com/AndresVaron/AppReport",
+                                          "https://docs.google.com/spreadsheets/d/1ic2uYfMXJ5twAmeiN3izgW6LLee-88YM_KIZJEOSScw/edit?usp=sharing",
                                           "_blank");
                                     } catch (error) {}
                                   },
                               ),
                               new TextSpan(
                                 text:
-                                    ' encontrará el repositorio que si reconoce dart2js.',
+                                    ' está nuestra base de datos montada en un spreadsheet.',
                                 style: TextStyle(
-                                    fontSize: tamanhoTexto * 0.75,
+                                    fontSize: tamanhoTexto * 0.6,
                                     color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ))),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Center(
+                    child: Container(
+                        width: width,
+                        child: RichText(
+                          text: new TextSpan(
+                            children: [
+                              new TextSpan(
+                                text: 'https://flutter.dev/web',
+                                style: new TextStyle(
+                                    fontSize: tamanhoTexto * 0.6,
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline),
+                                recognizer: new TapGestureRecognizer()
+                                  ..onTap = () {
+                                    try {
+                                      html.window.open(
+                                          "https://flutter.dev/web", "_blank");
+                                    } catch (error) {}
+                                  },
+                              ),
+                            ],
+                          ),
+                        ))),
+              ),
+            ]),
+          );
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Center(
+                    child: Container(
+                        width: width,
+                        child: RichText(
+                          text: new TextSpan(
+                            children: [
+                              new TextSpan(
+                                text: 'https://flutter.dev/docs/deployment/web',
+                                style: new TextStyle(
+                                    fontSize: tamanhoTexto * 0.6,
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline),
+                                recognizer: new TapGestureRecognizer()
+                                  ..onTap = () {
+                                    try {
+                                      html.window.open(
+                                          "https://flutter.dev/docs/deployment/web",
+                                          "_blank");
+                                    } catch (error) {}
+                                  },
                               ),
                             ],
                           ),

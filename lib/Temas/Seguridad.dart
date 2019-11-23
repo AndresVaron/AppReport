@@ -1,21 +1,22 @@
 import 'dart:async';
 import 'package:appreport/Temas/Temas.dart';
+import 'package:flutter/gestures.dart';
 import 'package:universal_html/prefer_universal/html.dart' as html;
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
-class Tema1 extends StatefulWidget {
-  const Tema1({Key key}) : super(key: key);
+class Seguridad extends StatefulWidget {
+  const Seguridad({Key key}) : super(key: key);
   @override
-  Tema1State createState() => Tema1State();
+  SeguridadState createState() => SeguridadState();
 }
 
-class Tema1State extends State<Tema1> {
+class SeguridadState extends State<Seguridad> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   InfoTema contador;
   int con;
-  final String id = "tema1";
-  final int index = 1;
+  final String id = "seguridad";
+  final int index = 1; //TODO
   bool estabaOff = false;
 
   @override
@@ -44,7 +45,7 @@ class Tema1State extends State<Tema1> {
             sidePadding = constraints.maxWidth / 5;
             width = constraints.maxWidth / 10 * 6;
             tamanhoTexto = (constraints.maxHeight /
-                20); //Cambiar esto para que quepan todos los titulos en web.
+                20); //Cambiar esto para que quepan todos los títulos en web.
           }
           var children = <Widget>[
             SizedBox(
@@ -52,16 +53,103 @@ class Tema1State extends State<Tema1> {
             ),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                padding: EdgeInsets.only(
+                    left: constraints.maxWidth / 10,
+                    right: constraints.maxWidth / 10),
                 child: Container(
-                  width: width,
+                  width: constraints.maxWidth / 10 * 8,
                   child: Center(
-                      child: Text('Tema 1',
+                      child: Text('Seguridad',
                           style: TextStyle(fontSize: tamanhoTexto * 1.5))),
                 ),
-              )
+              ),
+              SizedBox(
+                height: tamanhoTexto * 2,
+              ),
             ]),
           ];
+          //Aqui se agrega todo el contenido.
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.justify,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text: 'Dado que esta aplicación solo mas que todo consiste en información estática para el lector, por ese lado no fue necesario implementar seguridad. ' +
+                                'El único punto de acceso al cual se podría dañar su funcionalidad es la base de datos, pero dado que se hacen las verificaciones necesarias al ' +
+                                'momento de hacer las peticiones esto no puede ocurrir. Además, debido a que se utilizan los servidores de Google es poco probable que alguien logre ' +
+                                'tumbar el servidor. Por otro lado, en el caso de que se llegara a caer, la utilización del cache le permite al usuario continuar usando la aplicación sin ' +
+                                'ningún problema. Además, el hecho de que la pagina este hostiada en github pages nos permite utilizar el protocolo https por el cual se obtienen aun mas ' +
+                                'medidas de seguridad como el uso de SSL.\n\nEn las imágenes a seguir se encuentra el código de configuración del api junto con el de las peticiones que se hacen cuando se desea/refrescar actualiza la información. ',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto / 2,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: Image(image: AssetImage('images/scriptdb.jpeg'))),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto / 2,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: Image(image: AssetImage('images/http.jpeg'))),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto / 2,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.justify,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text: 'Finalmente, un aspecto importante de la seguridad en flutter es el hecho de que esta en technical preview y se ' +
+                                'desarrollo la aplicación en el branch de developers esto probablemente genere varias fallas de seguridad que aun no han encontrado/parchado.  ',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
+            ]),
+          );
           children.add(SizedBox(
             height: tamanhoTexto / 2,
           ));

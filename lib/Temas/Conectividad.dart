@@ -5,17 +5,17 @@ import 'package:universal_html/prefer_universal/html.dart' as html;
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
-class LaApp extends StatefulWidget {
-  const LaApp({Key key}) : super(key: key);
+class Conectividad extends StatefulWidget {
+  const Conectividad({Key key}) : super(key: key);
   @override
-  LaAppState createState() => LaAppState();
+  ConectividadState createState() => ConectividadState();
 }
 
-class LaAppState extends State<LaApp> {
+class ConectividadState extends State<Conectividad> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   InfoTema contador;
   int con;
-  final String id = "laapp";
+  final String id = "conectividad";
   final int index = 1; //TODO
   bool estabaOff = false;
 
@@ -59,7 +59,7 @@ class LaAppState extends State<LaApp> {
                 child: Container(
                   width: constraints.maxWidth / 10 * 8,
                   child: Center(
-                      child: Text('La App',
+                      child: Text('Conectividad',
                           style: TextStyle(fontSize: tamanhoTexto * 1.5))),
                 ),
               ),
@@ -74,13 +74,25 @@ class LaAppState extends State<LaApp> {
               Padding(
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
                 child: Container(
-                  width: width,
-                  child: Text(
-                      '' +
-                          'Dado que esta aplicación fue desarrollada específicamente para el análisis de su transformación entre nativa y web, es importante notar que algunas de las' +
-                          ' decisiones tomas durante el desarrollo de estas fueron específicamente para poder analizarla.\n',
-                      style: TextStyle(fontSize: tamanhoTexto * 0.75)),
-                ),
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.justify,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text: 'Como se indicó en las secciones anteriores, el feature de los contadores cuenta con conectividad eventual. Esto implica que las acciones que haga' +
+                                ' el usuario en el navegador se guardan y se hacen cuando haga algo con internet. El usuario podría acceder a la pagina, entrar a un ascensor donde perdería' +
+                                ' la señal, darle ups a algunos temas, y al salir, podría seguir utilizándola sin ningún problema. Esto se debe a la utilización de la memoria destacada en la sección' +
+                                ' anterior. Además, en el momento de refrescar los "Ups" cuando no hay internet se sigue la convención de material design informándole al usuario con la utilización' +
+                                ' de un snackbar.',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )),
               ),
             ]),
           );
@@ -90,24 +102,11 @@ class LaAppState extends State<LaApp> {
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
                 child: Container(
                     width: width,
-                    child: RichText(
-                      softWrap: true,
-                      textAlign: TextAlign.center,
-                      text: new TextSpan(
-                        children: [
-                          new TextSpan(
-                            text: 'Propósito',
-                            style: TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                          ),
-                        ],
-                      ),
-                    )),
+                    child: Image(image: AssetImage('images/nav.jpeg'))),
               ),
             ]),
           );
+
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
@@ -120,11 +119,11 @@ class LaAppState extends State<LaApp> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'El propósito de esta app/pagina, además de ser un ejemplo para analizar, es describir el proceso por el cual pasamos para desarrollarla. Como puede notar, esta está' +
-                                'dividida en secciones, tal que entre ellas se abordan los principales temas el el curso de Constr. de Aplicaciones Móviles de la Universidad de Los Andes.' +
-                                'Además de esto, cada sección contiene un contador de "Ups" que se almacenan en una base de datos centralizada de la cual se informará mas en la secciones posteriores. ' +
-                                'Esto se hizo para poder desarrollarla como una PWA y así poder entender mejor las ventajas y desventajas de estas sobre las aplicaciones nativas. \n\n' +
-                                'Dicho esto, en las siguientes secciones se destacan las decisiones tomadas, cuando necesarias, en el desarrollo para que cada aspecto de la aplicación se pudiera observar en las dos plataformas destino con el mismo código fuente.\n\n',
+                            text: 'Esto ocurre únicamente en las pantallas con contadores ya que la principal no cuenta con ningún servicio sin acceso a internet. Esta principal tiene como acción única el hecho de redirigir al usuario ' +
+                                'a las otras con cada uno de los temas. \n\nEste manejo de la conectividad se debe a dos cosas, el plugin de connectivity que utilizando un stream nos indica cuando hubo un cambio en la' +
+                                ' conectividad en móvil y, nuevamente, la librería de html para dart que nos permite acceder al atributo online de la ventana del navegador. En el escenario ideal, esto lo manejaría ' +
+                                'el bloc, y solo habría un stream de datos para manejar la conectividad del celular. Y esto ocurre, al compilar el repositorio con bloc a un dispositivo. En la pagina es otra' +
+                                ' historia. Ya que esta no tiene bloc, se quitó el stream del plugin de conectividad y solo se utiliza el atributo del navegador. ',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
@@ -135,45 +134,8 @@ class LaAppState extends State<LaApp> {
               ),
             ]),
           );
-          children.add(
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Center(
-                    child: Container(
-                        width: width,
-                        child: RichText(
-                          text: new TextSpan(
-                            children: [
-                              new TextSpan(
-                                text: 'Aquí',
-                                style: new TextStyle(
-                                    fontSize: tamanhoTexto * 0.75,
-                                    color: Colors.blue,
-                                    decoration: TextDecoration.underline),
-                                recognizer: new TapGestureRecognizer()
-                                  ..onTap = () {
-                                    try {
-                                      html.window.open(
-                                          "https://github.com/AndresVaron/AppReport-mov",
-                                          "_blank");
-                                    } catch (error) {}
-                                  },
-                              ),
-                              new TextSpan(
-                                text: ' encontrará el repositorio con BLoC.',
-                                style: TextStyle(
-                                    fontSize: tamanhoTexto * 0.75,
-                                    color: Colors.black),
-                              ),
-                            ],
-                          ),
-                        ))),
-              ),
-            ]),
-          );
           children.add(SizedBox(
-            height: tamanhoTexto / 2,
+            height: tamanhoTexto,
           ));
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
@@ -186,7 +148,7 @@ class LaAppState extends State<LaApp> {
                           text: new TextSpan(
                             children: [
                               new TextSpan(
-                                text: 'Aquí',
+                                text: 'https://pub.dev/packages/connectivity',
                                 style: new TextStyle(
                                     fontSize: tamanhoTexto * 0.75,
                                     color: Colors.blue,
@@ -195,17 +157,44 @@ class LaAppState extends State<LaApp> {
                                   ..onTap = () {
                                     try {
                                       html.window.open(
-                                          "https://github.com/AndresVaron/AppReport",
+                                          "https://pub.dev/packages/connectivity",
                                           "_blank");
                                     } catch (error) {}
                                   },
                               ),
+                            ],
+                          ),
+                        ))),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Center(
+                    child: Container(
+                        width: width,
+                        child: RichText(
+                          text: new TextSpan(
+                            children: [
                               new TextSpan(
-                                text:
-                                    ' encontrará el repositorio que si reconoce dart2js.',
-                                style: TextStyle(
+                                text: 'https://pub.dev/packages/universal_html',
+                                style: new TextStyle(
                                     fontSize: tamanhoTexto * 0.75,
-                                    color: Colors.black),
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline),
+                                recognizer: new TapGestureRecognizer()
+                                  ..onTap = () {
+                                    try {
+                                      html.window.open(
+                                          "https://pub.dev/packages/universal_html",
+                                          "_blank");
+                                    } catch (error) {}
+                                  },
                               ),
                             ],
                           ),

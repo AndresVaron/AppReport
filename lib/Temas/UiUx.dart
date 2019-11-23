@@ -5,17 +5,17 @@ import 'package:universal_html/prefer_universal/html.dart' as html;
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
-class LaApp extends StatefulWidget {
-  const LaApp({Key key}) : super(key: key);
+class UiUx extends StatefulWidget {
+  const UiUx({Key key}) : super(key: key);
   @override
-  LaAppState createState() => LaAppState();
+  UiUxState createState() => UiUxState();
 }
 
-class LaAppState extends State<LaApp> {
+class UiUxState extends State<UiUx> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   InfoTema contador;
   int con;
-  final String id = "laapp";
+  final String id = "uiux";
   final int index = 1; //TODO
   bool estabaOff = false;
 
@@ -59,7 +59,7 @@ class LaAppState extends State<LaApp> {
                 child: Container(
                   width: constraints.maxWidth / 10 * 8,
                   child: Center(
-                      child: Text('La App',
+                      child: Text('Ui/Ux',
                           style: TextStyle(fontSize: tamanhoTexto * 1.5))),
                 ),
               ),
@@ -74,13 +74,23 @@ class LaAppState extends State<LaApp> {
               Padding(
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
                 child: Container(
-                  width: width,
-                  child: Text(
-                      '' +
-                          'Dado que esta aplicación fue desarrollada específicamente para el análisis de su transformación entre nativa y web, es importante notar que algunas de las' +
-                          ' decisiones tomas durante el desarrollo de estas fueron específicamente para poder analizarla.\n',
-                      style: TextStyle(fontSize: tamanhoTexto * 0.75)),
-                ),
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.justify,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text: 'Debido a que Flutter es desarrollado por Google esto sigue las convenciones de material design, gracias a esto, las personas que desarrollan en Flutter no tiene que preocuparse' +
+                                ' tanto por el look and feel de la aplicación sino que debe seguir los estándares establecidos. Dicho esto, Flutter tiene múltiples widgets que le permiten al desarrollador seguir estos' +
+                                ' estándares con facilidad, tal como el ActionButton que utilizamos para hacer "Up" y el snackbar para informarle al usuario. ',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )),
               ),
             ]),
           );
@@ -90,21 +100,7 @@ class LaAppState extends State<LaApp> {
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
                 child: Container(
                     width: width,
-                    child: RichText(
-                      softWrap: true,
-                      textAlign: TextAlign.center,
-                      text: new TextSpan(
-                        children: [
-                          new TextSpan(
-                            text: 'Propósito',
-                            style: TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                          ),
-                        ],
-                      ),
-                    )),
+                    child: Image(image: AssetImage('images/nav.jpeg'))),
               ),
             ]),
           );
@@ -120,11 +116,11 @@ class LaAppState extends State<LaApp> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'El propósito de esta app/pagina, además de ser un ejemplo para analizar, es describir el proceso por el cual pasamos para desarrollarla. Como puede notar, esta está' +
-                                'dividida en secciones, tal que entre ellas se abordan los principales temas el el curso de Constr. de Aplicaciones Móviles de la Universidad de Los Andes.' +
-                                'Además de esto, cada sección contiene un contador de "Ups" que se almacenan en una base de datos centralizada de la cual se informará mas en la secciones posteriores. ' +
-                                'Esto se hizo para poder desarrollarla como una PWA y así poder entender mejor las ventajas y desventajas de estas sobre las aplicaciones nativas. \n\n' +
-                                'Dicho esto, en las siguientes secciones se destacan las decisiones tomadas, cuando necesarias, en el desarrollo para que cada aspecto de la aplicación se pudiera observar en las dos plataformas destino con el mismo código fuente.\n\n',
+                            text: 'A pesar de que el desarrollo en flutter facilita algunas cosas, para desarrollar una aplicación responsiva en el navegador fue necesario tomar algunas medidas que no son de grande importancia' +
+                                ' al desarrollar para móviles como definir el tamaño del texto y los paddings de los elementos dependiendo del tamaño de la pantalla en la que esta. Esto se debe a que como en móviles la mayoría de' +
+                                ' las pantallas tienen un ancho muy parecido, no es tan necesario tenerlo en cuenta. Por otro lado, un buen desarrollador si lo debería tener en cuenta ya que flutter permite compilar el código en tablets' +
+                                ' entre otros dispositivos. Con esto en mente, recientemente el equipo de flutter ha promovido esta flexibilidad entre dispositivos. Un ejemplo de esto es el concurso que lanzo el equipo de flutter para desarrollar' +
+                                ' la interfaz de un reloj inteligente de Lenovo.',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
@@ -139,41 +135,45 @@ class LaAppState extends State<LaApp> {
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Center(
-                    child: Container(
-                        width: width,
-                        child: RichText(
-                          text: new TextSpan(
-                            children: [
-                              new TextSpan(
-                                text: 'Aquí',
-                                style: new TextStyle(
-                                    fontSize: tamanhoTexto * 0.75,
-                                    color: Colors.blue,
-                                    decoration: TextDecoration.underline),
-                                recognizer: new TapGestureRecognizer()
-                                  ..onTap = () {
-                                    try {
-                                      html.window.open(
-                                          "https://github.com/AndresVaron/AppReport-mov",
-                                          "_blank");
-                                    } catch (error) {}
-                                  },
-                              ),
-                              new TextSpan(
-                                text: ' encontrará el repositorio con BLoC.',
-                                style: TextStyle(
-                                    fontSize: tamanhoTexto * 0.75,
-                                    color: Colors.black),
-                              ),
-                            ],
+                child: Container(
+                    width: width,
+                    child: Image(image: AssetImage('images/challenge.jpeg'))),
+              ),
+            ]),
+          );
+
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.justify,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text: 'Finalmente, en la transformación de móvil a web nos encontramos con varios detalles que debilitan un poco la usabilidad de la aplicación.' +
+                                ' Entre estos se destaca la falta de un scrollbar en el navegador, ya que como flutter web no genera múltiples elementos en html y simplemente' +
+                                ' genera un componente que siempre toma la totalidad de la pantalla, el navegador no reconoce la altura de los elementos. Además de esto, al acceder desde un' +
+                                ' computador se puede notar que el router de la aplicación funciona como esperado, tal que cada NamedRoute de flutter hace referencia a una ruta de la aplicación ' +
+                                'siendo esta denominada con /#/{ruta} lo que le permite al usuario refrescar el browser sin ningún problema y continuar en el lugar que estaba. Con respecto al route' +
+                                ', a pesar de que se vuelve a iniciar todo al recargar la pagina esta logra cargar todo correctamente.Incluyendo las paginas que están debajo del stack de tal forma que ' +
+                                'el usuario aun puede regresar a la pagina principal. Por otro lado, en el navegador móvil la aplicación termina teniendo dos appbars, la del navegador como tal y la de la' +
+                                ' aplicación. Además, al acceder la aplicación desde el navegador en un dispositivo móvil se pierden algunos gestures del navegador ya que el componente los reconoce, entre estos esta el pull to refresh que no funciona ya que flutter lo toma como si el usuario quisiera scrollear hacia arriba. ',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.black),
                           ),
-                        ))),
+                        ],
+                      ),
+                    )),
               ),
             ]),
           );
           children.add(SizedBox(
-            height: tamanhoTexto / 2,
+            height: tamanhoTexto,
           ));
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
@@ -186,26 +186,54 @@ class LaAppState extends State<LaApp> {
                           text: new TextSpan(
                             children: [
                               new TextSpan(
-                                text: 'Aquí',
+                                text:
+                                    'https://developers.googleblog.com/2019/11/flutter-clock-contest.html?utm_source=ausdroid.net',
                                 style: new TextStyle(
-                                    fontSize: tamanhoTexto * 0.75,
+                                    fontSize: tamanhoTexto * 0.6,
                                     color: Colors.blue,
                                     decoration: TextDecoration.underline),
                                 recognizer: new TapGestureRecognizer()
                                   ..onTap = () {
                                     try {
                                       html.window.open(
-                                          "https://github.com/AndresVaron/AppReport",
+                                          "https://developers.googleblog.com/2019/11/flutter-clock-contest.html?utm_source=ausdroid.net",
                                           "_blank");
                                     } catch (error) {}
                                   },
                               ),
+                            ],
+                          ),
+                        ))),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Center(
+                    child: Container(
+                        width: width,
+                        child: RichText(
+                          text: new TextSpan(
+                            children: [
                               new TextSpan(
-                                text:
-                                    ' encontrará el repositorio que si reconoce dart2js.',
-                                style: TextStyle(
-                                    fontSize: tamanhoTexto * 0.75,
-                                    color: Colors.black),
+                                text: 'https://material.io/develop/flutter/',
+                                style: new TextStyle(
+                                    fontSize: tamanhoTexto * 0.6,
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline),
+                                recognizer: new TapGestureRecognizer()
+                                  ..onTap = () {
+                                    try {
+                                      html.window.open(
+                                          "https://material.io/develop/flutter/",
+                                          "_blank");
+                                    } catch (error) {}
+                                  },
                               ),
                             ],
                           ),

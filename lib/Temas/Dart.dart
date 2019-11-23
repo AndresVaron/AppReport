@@ -83,25 +83,10 @@ class DartState extends State<Dart> {
                                 'con la plataforma sin pasar por un puente JavaScript que hace un cambio de contexto.\n\nSin embargo, también puede ser compilada como JavaScript para ' +
                                 'correr en la mayoría de los lenguajes, Como stand-alone en los equipos que tienen el SDK de Dart.\n\nEl 5 de noviembre Dart anuncio que dart2native permitiría compilar Dart ' +
                                 'a ejecutables autocontenidos para los sistemas operativos Linux, MacOs y Windows.\n\nFinalmente cabe notar que Dart se basa en el principio de tree shaking lo que significa' +
-                                ' que al momento de compilar va a eliminar el código muerto es decir el que no se está usando. Dart puede transpilar opcionalmente a JavaScript utilizando la librería ',
+                                ' que al momento de compilar va a eliminar el código muerto es decir el que no se está usando. Dart puede transpilar opcionalmente a JavaScript utilizando la librería Dart2Js.',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
-                          ),
-                          new TextSpan(
-                            text: 'Dart2Js',
-                            style: new TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
-                                color: Colors.blue,
-                                decoration: TextDecoration.underline),
-                            recognizer: new TapGestureRecognizer()
-                              ..onTap = () {
-                                try {
-                                  html.window.open(
-                                      "https://dart.dev/tools/dart2js",
-                                      "_blank");
-                                } catch (error) {}
-                              },
                           ),
                         ],
                       ),
@@ -259,7 +244,7 @@ class DartState extends State<Dart> {
                         children: [
                           new TextSpan(
                             text:
-                                '¿El peso de las aplicaciones de flutter se vera reducido en las PWA creadas con flutter o por el contrario el serviceworker se sobrecargará?\n',
+                                '¿El peso de las aplicaciones de flutter se vera reducido en las PWA creadas con flutter o por el contrario, el serviceworker se sobrecargará?\n',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.6,
                                 fontStyle: FontStyle.italic,
@@ -306,9 +291,6 @@ class DartState extends State<Dart> {
               ),
             ]),
           );
-          children.add(SizedBox(
-            height: tamanhoTexto / 2,
-          ));
           children.add(SizedBox(
             height: tamanhoTexto / 2,
           ));
@@ -379,6 +361,41 @@ class DartState extends State<Dart> {
               ),
             ]),
           );
+          children.add(SizedBox(
+            height: tamanhoTexto / 2,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Center(
+                    child: Container(
+                        width: width,
+                        child: RichText(
+                          text: new TextSpan(
+                            children: [
+                              new TextSpan(
+                                text: 'https://dart.dev/tools/dart2js',
+                                style: new TextStyle(
+                                    fontSize: tamanhoTexto * 0.5,
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline),
+                                recognizer: new TapGestureRecognizer()
+                                  ..onTap = () {
+                                    try {
+                                      html.window.open(
+                                          "https://dart.dev/tools/dart2js",
+                                          "_blank");
+                                    } catch (error) {}
+                                  },
+                              ),
+                            ],
+                          ),
+                        ))),
+              ),
+            ]),
+          );
+
           children.add(SizedBox(
             height: tamanhoTexto / 2,
           ));

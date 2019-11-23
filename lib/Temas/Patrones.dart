@@ -5,18 +5,18 @@ import 'package:universal_html/prefer_universal/html.dart' as html;
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
-class LaApp extends StatefulWidget {
-  const LaApp({Key key}) : super(key: key);
+class Patrones extends StatefulWidget {
+  const Patrones({Key key}) : super(key: key);
   @override
-  LaAppState createState() => LaAppState();
+  PatronesState createState() => PatronesState();
 }
 
-class LaAppState extends State<LaApp> {
+class PatronesState extends State<Patrones> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   InfoTema contador;
   int con;
-  final String id = "laapp";
-  final int index = 1; //TODO
+  final String id = "patrones";
+  final int index = 3;
   bool estabaOff = false;
 
   @override
@@ -45,7 +45,7 @@ class LaAppState extends State<LaApp> {
             sidePadding = constraints.maxWidth / 5;
             width = constraints.maxWidth / 10 * 6;
             tamanhoTexto = (constraints.maxHeight /
-                20); //Cambiar esto para que quepan todos los títulos en web.
+                20); //Cambiar esto para que quepan todos los titulos en web.
           }
           var children = <Widget>[
             SizedBox(
@@ -53,61 +53,19 @@ class LaAppState extends State<LaApp> {
             ),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(
-                    left: constraints.maxWidth / 10,
-                    right: constraints.maxWidth / 10),
-                child: Container(
-                  width: constraints.maxWidth / 10 * 8,
-                  child: Center(
-                      child: Text('La App',
-                          style: TextStyle(fontSize: tamanhoTexto * 1.5))),
-                ),
-              ),
-              SizedBox(
-                height: tamanhoTexto * 2,
-              ),
-            ]),
-          ];
-          //Aqui se agrega todo el contenido.
-          children.add(
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Padding(
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
                 child: Container(
                   width: width,
-                  child: Text(
-                      '' +
-                          'Dado que esta aplicación fue desarrollada específicamente para el análisis de su transformación entre nativa y web, es importante notar que algunas de las' +
-                          ' decisiones tomas durante el desarrollo de estas fueron específicamente para poder analizarla.\n',
-                      style: TextStyle(fontSize: tamanhoTexto * 0.75)),
+                  child: Center(
+                      child: Text('BLoC',
+                          style: TextStyle(fontSize: tamanhoTexto * 1.25))),
                 ),
               ),
             ]),
-          );
-          children.add(
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Container(
-                    width: width,
-                    child: RichText(
-                      softWrap: true,
-                      textAlign: TextAlign.center,
-                      text: new TextSpan(
-                        children: [
-                          new TextSpan(
-                            text: 'Propósito',
-                            style: TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                          ),
-                        ],
-                      ),
-                    )),
-              ),
-            ]),
-          );
+            SizedBox(
+              height: tamanhoTexto * 1.5,
+            ),
+          ];
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
@@ -120,11 +78,11 @@ class LaAppState extends State<LaApp> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'El propósito de esta app/pagina, además de ser un ejemplo para analizar, es describir el proceso por el cual pasamos para desarrollarla. Como puede notar, esta está' +
-                                'dividida en secciones, tal que entre ellas se abordan los principales temas el el curso de Constr. de Aplicaciones Móviles de la Universidad de Los Andes.' +
-                                'Además de esto, cada sección contiene un contador de "Ups" que se almacenan en una base de datos centralizada de la cual se informará mas en la secciones posteriores. ' +
-                                'Esto se hizo para poder desarrollarla como una PWA y así poder entender mejor las ventajas y desventajas de estas sobre las aplicaciones nativas. \n\n' +
-                                'Dicho esto, en las siguientes secciones se destacan las decisiones tomadas, cuando necesarias, en el desarrollo para que cada aspecto de la aplicación se pudiera observar en las dos plataformas destino con el mismo código fuente.\n\n',
+                            text: 'Para manejar la lógica de la aplicación se decidió implementar un el patrón BLoC, o Business Logic Component, tal que este es un singleton ' +
+                                'que maneja toda la lógica de los "Ups" de la aplicación. Cómo se destacara posteriormente, debido a errores en la libreria dart2js fue necesario ' +
+                                'implementar una versión de la app sin el BLoC para el despliegue en web tal que cada vista maneja la lógica de sus "Ups", con esto, se pierde el feature mas importante del bloc, lograr centralizar toda la lógica.' +
+                                'Muchas veces este patrón se utiliza simplemente para mejorar la calidad del código desarrollado. En esta aplicación no es así, el bloc nos permite manejar el cache de los "Ups" en un solo lugar, tal que en el caso de ' +
+                                ' que la conexión a internet regrese luego de hacer un "Up" offline, cualquier acción por el usuario actualiza el cache de todas las secciones. Mientras que, como se puede observar en la pagina, solo acciones en la misma vista actualización su cache.\n',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
@@ -135,6 +93,100 @@ class LaAppState extends State<LaApp> {
               ),
             ]),
           );
+          children.add(SizedBox(
+            height: tamanhoTexto / 2,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: Image(image: AssetImage('images/bloc.png'))),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto / 2,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.justify,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text: 'A pesar de que no se pudo utilizar Bloc en el despliegue, si se logró analizar un pedazo de la transformación que hace dart2js. En las imágenes ' +
+                                'a seguir se puede observar como el código en Dart, utilización la libreria dart:bloc pasa a código JavaScript optimizado. Cabe resaltar que el código en JavaScript estaba minimizado ' +
+                                'y se formateo para entenderlo mejor. Fue necesario hacer este análisis con los métodos de print() ya que las cadenas "BlocClicked!" y "BlocClicked2!" no se pueden minimizar más.',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto / 2,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: Image(image: AssetImage('images/blocdart.jpeg'))),
+              ),
+            ]),
+          );
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: Image(image: AssetImage('images/blocjs.jpeg'))),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto / 2,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.justify,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text:
+                                'Como se puede observar, lógicamente, tiene sentido que un stream de datos se transforme e un while(true) asincrónico con un switch que imprime dependiendo del evento que se le envié.',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto / 2,
+          ));
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
@@ -146,25 +198,19 @@ class LaAppState extends State<LaApp> {
                           text: new TextSpan(
                             children: [
                               new TextSpan(
-                                text: 'Aquí',
+                                text: 'https://bloclibrary.dev/#/',
                                 style: new TextStyle(
-                                    fontSize: tamanhoTexto * 0.75,
+                                    fontSize: tamanhoTexto * 0.5,
                                     color: Colors.blue,
                                     decoration: TextDecoration.underline),
                                 recognizer: new TapGestureRecognizer()
                                   ..onTap = () {
                                     try {
                                       html.window.open(
-                                          "https://github.com/AndresVaron/AppReport-mov",
+                                          "https://bloclibrary.dev/#/",
                                           "_blank");
                                     } catch (error) {}
                                   },
-                              ),
-                              new TextSpan(
-                                text: ' encontrará el repositorio con BLoC.',
-                                style: TextStyle(
-                                    fontSize: tamanhoTexto * 0.75,
-                                    color: Colors.black),
                               ),
                             ],
                           ),
@@ -186,26 +232,19 @@ class LaAppState extends State<LaApp> {
                           text: new TextSpan(
                             children: [
                               new TextSpan(
-                                text: 'Aquí',
+                                text: 'https://youtu.be/fahC3ky_zW0',
                                 style: new TextStyle(
-                                    fontSize: tamanhoTexto * 0.75,
+                                    fontSize: tamanhoTexto * 0.5,
                                     color: Colors.blue,
                                     decoration: TextDecoration.underline),
                                 recognizer: new TapGestureRecognizer()
                                   ..onTap = () {
                                     try {
                                       html.window.open(
-                                          "https://github.com/AndresVaron/AppReport",
+                                          "https://youtu.be/fahC3ky_zW0",
                                           "_blank");
                                     } catch (error) {}
                                   },
-                              ),
-                              new TextSpan(
-                                text:
-                                    ' encontrará el repositorio que si reconoce dart2js.',
-                                style: TextStyle(
-                                    fontSize: tamanhoTexto * 0.75,
-                                    color: Colors.black),
                               ),
                             ],
                           ),
@@ -214,7 +253,7 @@ class LaAppState extends State<LaApp> {
             ]),
           );
           children.add(SizedBox(
-            height: tamanhoTexto,
+            height: tamanhoTexto / 2,
           ));
           return (ListView(children: children));
         }),

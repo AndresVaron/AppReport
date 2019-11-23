@@ -21,42 +21,37 @@ void main() async {
     Tema(nombre: "Dart", id: "dart", widget: new Dart()),
     //Lo que falte..
     //TODO:
-    Tema(
-        nombre: "La App",
-        id: "laapp",
-        widget: new LaApp()), //En general que es.
-    Tema(
-        nombre: "Patrones",
-        id: "patrones",
-        widget: new Tema1()), //Explicar bloc, como se implemento y pa que.
+    Tema(nombre: "La App", id: "laapp", widget: new LaApp()),
+    Tema(nombre: "Patrones", id: "patrones", widget: new Patrones()),
     Tema(
         nombre: "Performance",
         id: "performance",
         widget:
-            new Tema1()), //Sacar la grafica, y explicar que le falta con los detalles
+            new Performance()), //Sacar la grafica, y explicar que le falta con los detalles
     Tema(
         nombre: "Almacenamiento",
         id: "almacenamiento",
-        widget: new Tema1()), //Sharepref, cache y que falta por mejorar.
+        widget: new Almacenamiento()),
     Tema(
         nombre: "Conectividad Eventual",
         id: "conectividad",
         widget:
-            new Tema1()), //Explicar la utilizacion de html y connectivity plugin.
+            new Conectividad()), //Explicar la utilizacion de html y connectivity plugin.
     Tema(
         nombre: "Seguridad",
         id: "seguridad",
-        widget: new Tema1()), //Explicar el api. las peticiones. etc.
+        widget: new Seguridad()), //Explicar el api. las peticiones. etc.
     Tema(
-        nombre: "Ux/Ui",
-        id: "uxui",
+        nombre: "Ui/Ux",
+        id: "uiux",
         widget:
-            new Tema1()), //Explicar que como es google, se usa mas que todo material. ux falta por mejorar bastante.(Movil/web)
+            new UiUx()), //Explicar que como es google, se usa mas que todo material. ux falta por mejorar bastante.(Movil/web)
     Tema(
         nombre: "RoadBLOCks",
         id: "roadblocks",
         widget: new RoadBLOCks()), //Falta mostrar los gifs.
-    Tema(nombre: "Conclusiones", id: "conclusiones", widget: new Tema1()),
+    Tema(
+        nombre: "Conclusiones", id: "conclusiones", widget: new Conclusiones()),
   ];
 
   runApp(MyApp(temas, _navigatorKey));
