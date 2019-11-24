@@ -81,8 +81,8 @@ class UiUxState extends State<UiUx> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'Debido a que Flutter es desarrollado por Google esto sigue las convenciones de material design, gracias a esto, las personas que desarrollan en Flutter no tiene que preocuparse' +
-                                ' tanto por el look and feel de la aplicación sino que debe seguir los estándares establecidos. Dicho esto, Flutter tiene múltiples widgets que le permiten al desarrollador seguir estos' +
+                            text: 'Debido a que Flutter es desarrollado por Google este sigue las convenciones de material design, gracias a esto, las personas que desarrollan en Flutter no tienen que preocuparse' +
+                                ' tanto por el look and feel de la aplicación, sino que deben seguir los estándares establecidos. Dicho esto, Flutter tiene múltiples widgets que le permiten al desarrollador seguir estos' +
                                 ' estándares con facilidad, tal como el ActionButton que utilizamos para hacer "Up" y el snackbar para informarle al usuario. ',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
@@ -116,10 +116,10 @@ class UiUxState extends State<UiUx> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'A pesar de que el desarrollo en flutter facilita algunas cosas, para desarrollar una aplicación responsiva en el navegador fue necesario tomar algunas medidas que no son de grande importancia' +
-                                ' al desarrollar para móviles como definir el tamaño del texto y los paddings de los elementos dependiendo del tamaño de la pantalla en la que esta. Esto se debe a que como en móviles la mayoría de' +
-                                ' las pantallas tienen un ancho muy parecido, no es tan necesario tenerlo en cuenta. Por otro lado, un buen desarrollador si lo debería tener en cuenta ya que flutter permite compilar el código en tablets' +
-                                ' entre otros dispositivos. Con esto en mente, recientemente el equipo de flutter ha promovido esta flexibilidad entre dispositivos. Un ejemplo de esto es el concurso que lanzo el equipo de flutter para desarrollar' +
+                            text: 'A pesar de que el desarrollo en flutter facilita algunas cosas, para desarrollar una aplicación responsiva en el navegador fue necesario tomar algunas medidas que no son de gran importancia.' +
+                                ' Al desarrollar para móviles se  define el tamaño del texto y los paddings de los elementos dependiendo del tamaño de la pantalla en la que está. Esto se debe a que como en móviles la mayoría de' +
+                                ' las pantallas tienen un ancho muy parecido, no es tan necesario tenerlo en cuenta. Sin embargo, un buen desarrollador si lo debería tener en cuenta ya que flutter permite compilar el código en tablets' +
+                                ' entre otros dispositivos. Con esto en mente, recientemente el equipo de flutter ha promovido esta flexibilidad entre dispositivos. Un ejemplo de esto es el concurso que lanzó el equipo de flutter para desarrollar' +
                                 ' la interfaz de un reloj inteligente de Lenovo.',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
@@ -154,14 +154,14 @@ class UiUxState extends State<UiUx> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'Finalmente, en la transformación de móvil a web nos encontramos con varios detalles que debilitan un poco la usabilidad de la aplicación.' +
+                            text: 'Finalmente, en la transformación de móvil a web nos encontramos con varios detalles que reducen la usabilidad de la aplicación.' +
                                 ' Entre estos se destaca la falta de un scrollbar en el navegador, ya que como flutter web no genera múltiples elementos en html y simplemente' +
                                 ' genera un componente que siempre toma la totalidad de la pantalla, el navegador no reconoce la altura de los elementos. Además de esto, al acceder desde un' +
-                                ' computador se puede notar que el router de la aplicación funciona como esperado, tal que cada NamedRoute de flutter hace referencia a una ruta de la aplicación ' +
+                                ' computador se puede notar que el router de la aplicación funciona como se espera,de tal manera que cada NamedRoute de flutter hace referencia a una ruta de la aplicación ' +
                                 'siendo esta denominada con /#/{ruta} lo que le permite al usuario refrescar el browser sin ningún problema y continuar en el lugar que estaba. Con respecto al route' +
-                                ', a pesar de que se vuelve a iniciar todo al recargar la pagina esta logra cargar todo correctamente.Incluyendo las paginas que están debajo del stack de tal forma que ' +
+                                ', a pesar de que se vuelve a iniciar todo al recargar la página logra cargar todo correctamente.Incluyendo las páginas que están debajo del stack de tal forma que ' +
                                 'el usuario aun puede regresar a la pagina principal. Por otro lado, en el navegador móvil la aplicación termina teniendo dos appbars, la del navegador como tal y la de la' +
-                                ' aplicación. Además, al acceder la aplicación desde el navegador en un dispositivo móvil se pierden algunos gestures del navegador ya que el componente los reconoce, entre estos esta el pull to refresh que no funciona ya que flutter lo toma como si el usuario quisiera scrollear hacia arriba. ',
+                                ' aplicación. Además, al acceder a la aplicación desde el navegador en un dispositivo móvil se pierden algunos gestures del navegador ya que el componente no los reconoce, entre estos esta el pull to refresh que no funciona ya que flutter lo toma como si el usuario quisiera scrollear hacia arriba. ',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
