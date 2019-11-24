@@ -155,8 +155,8 @@ class BlocState extends State<Bloc> {
                         children: [
                           new TextSpan(
                             text: 'Ionic es un framework de desarrollo que fue lanzado al mercado desde 2013, sin embargo, su fuerte nunca ha sido el desempeño ' +
-                                'sino que busca que la curva de aprendizaje sea bastante rápida ya que esta esta basada en typescript que generalmente es caracterizado ' +
-                                ' como una forma mas simple de javascript. Sin embaro su arquitectura hace que se quede corto en el rendimiento que puede dar, requiere de frameworks de terceros para funcionar.\n',
+                                'sino que busca que la curva de aprendizaje sea bastante rápida ya que esta está basada en typescript que generalmente es caracterizada ' +
+                                ' como una forma mas simple de javascript. Sin embargo su arquitectura hace que se quede corto en el rendimiento que puede dar, requiere de frameworks de terceros para funcionar.\n',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
@@ -244,11 +244,11 @@ class BlocState extends State<Bloc> {
                         children: [
                           new TextSpan(
                             text: 'Sin embargo pese a esto los problemas de rendimiento de React Native aparecen cuando se sobre utiliza el bridge y es que cuando se hacen' +
-                                ' animaciones o transiciones o se desliza el dedo sobre la pantalla se intenta acceder a los widgets del OEM(original equipment manufacturer) lo ' +
-                                'que va a causar que en aparezcan cuellos de botella cuando se intenta pasar de un ámbito a otro.\n\nPor otro lado, si bien react-native tiene más adopción' +
-                                ' por parte de compañías prestigiosas por ejemplo es usado por Facebook, Instagram, Pinterest, Skype, Tesla, Uber, Walmart, Salesforce, Vogue.  ' +
+                                ' animaciones o transiciones o se desliza el dedo sobre la pantalla internamente se intentará  acceder a los widgets del OEM(original equipment manufacturer) lo ' +
+                                'que va a causar que aparezcan cuellos de botella cuando se intenta pasar de un ámbito a otro.\n\nPor otro lado, si bien react-native tiene más adopción comparativamente con flutter, (lo que lo haria un mejor candidato para nuestro analisis),' +
+                                ' por parte de compañías prestigiosas, por ejemplo es usado por Facebook, Instagram, Pinterest, Skype, Tesla, Uber, Walmart, Salesforce, Vogue.  ' +
                                 'Lo cierto es que estuvo cultivando esta ventaja desde 2015 cuando fue lanzado, y sin embargo no la ha logrado mantener porque Flutter que ha principio ' +
-                                'de año su aplicación más notable era The Hamilton musical, ha logrado ganar tracción y ser usado por Alibaba, Greentea, Google Ads.\n\nEn conclusión la integración ' +
+                                'del año 2019 su aplicación más notable era The Hamilton musical, ha logrado ganar tracción y ser usado por Alibaba, Greentea, Google Ads.\n\nEn conclusión la integración ' +
                                 'se hace necesaria en algunos contextos, hay una gran presión de los desarrolladores por herramientas que les faciliten la vida y Google puede haber dado con el clavo. ',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
