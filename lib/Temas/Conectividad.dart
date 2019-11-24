@@ -16,7 +16,7 @@ class ConectividadState extends State<Conectividad> {
   InfoTema contador;
   int con;
   final String id = "conectividad";
-  final int index = 10; //TODO
+  final int index = 11;
   bool estabaOff = false;
 
   @override

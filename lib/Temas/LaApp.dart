@@ -16,7 +16,7 @@ class LaAppState extends State<LaApp> {
   InfoTema contador;
   int con;
   final String id = "laapp";
-  final int index = 6; //TODO
+  final int index = 7; 
   bool estabaOff = false;
 
   @override
@@ -215,6 +215,34 @@ class LaAppState extends State<LaApp> {
           );
           children.add(SizedBox(
             height: tamanhoTexto,
+          ));
+
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: Image(image: AssetImage('images/pwa.jpeg'))),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto / 2,
+          ));
+
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: Image(image: AssetImage('images/pwa2.jpeg'))),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto / 2,
           ));
           return (ListView(children: children));
         }),

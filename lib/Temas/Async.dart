@@ -5,18 +5,18 @@ import 'package:universal_html/prefer_universal/html.dart' as html;
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
-class Bloc extends StatefulWidget {
-  const Bloc({Key key}) : super(key: key);
+class Async extends StatefulWidget {
+  const Async({Key key}) : super(key: key);
   @override
-  BlocState createState() => BlocState();
+  AsyncState createState() => AsyncState();
 }
 
-class BlocState extends State<Bloc> {
+class AsyncState extends State<Async> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   InfoTema contador;
   int con;
-  final String id = "patrones";
-  final int index = 3;
+  final String id = "async";
+  final int index = 5;
   bool estabaOff = false;
 
   @override
@@ -57,8 +57,7 @@ class BlocState extends State<Bloc> {
                 child: Container(
                   width: width,
                   child: Center(
-                      child: Text(
-                          'Bloc del Antes y Del Ahora en Cross-Platform',
+                      child: Text('Async',
                           style: TextStyle(fontSize: tamanhoTexto * 1.25))),
                 ),
               ),
@@ -75,39 +74,12 @@ class BlocState extends State<Bloc> {
                     width: width,
                     child: RichText(
                       softWrap: true,
-                      textAlign: TextAlign.center,
-                      text: new TextSpan(
-                        children: [
-                          new TextSpan(
-                            text: 'Flash',
-                            style: TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                          ),
-                        ],
-                      ),
-                    )),
-              ),
-            ]),
-          );
-          children.add(
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Container(
-                    width: width,
-                    child: RichText(
-                      softWrap: true,
                       textAlign: TextAlign.justify,
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'Flash: fue la herramienta más popular para hacer cross-platform, y la historia de flash es una muestra de cómo hacer cross-platform ' +
-                                'permite universalizar el acceso a un a tecnología.\n\nInclusive se puede llegar a pensar en los sistemas operativos como elementos que permiten ' +
-                                'aumentar la integración. (No es sino solo con Windows que se puede construir software tanto para equipos de  HP como Lenovo).\n\nEn resumen, el éxito' +
-                                ' de una Buena integración es que sea eficiente, en la mayoría de entornos en los que debe ser desplegado.  Hay momentos en los que a pesar de la perdida ' +
-                                'de rendimiento la integración se vuelve un mal necesario.\n',
+                            text:
+                                'Dart es un lenguaje de programación que se ejecuta en un único hilo, por lo que se debe usar programación asíncrona para evitar que este hilo se bloquee cuando se realizan operaciones que sean extensivas en el uso del tiempo (time extensive) ',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
@@ -118,6 +90,9 @@ class BlocState extends State<Bloc> {
               ),
             ]),
           );
+          children.add(SizedBox(
+            height: tamanhoTexto,
+          ));
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
@@ -130,56 +105,7 @@ class BlocState extends State<Bloc> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'Why not Ionic?',
-                            style: TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                          ),
-                        ],
-                      ),
-                    )),
-              ),
-            ]),
-          );
-          children.add(
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Container(
-                    width: width,
-                    child: RichText(
-                      softWrap: true,
-                      textAlign: TextAlign.justify,
-                      text: new TextSpan(
-                        children: [
-                          new TextSpan(
-                            text: 'Ionic es un framework de desarrollo que fue lanzado al mercado desde 2013, sin embargo, su fuerte nunca ha sido el desempeño ' +
-                                'sino que busca que la curva de aprendizaje sea bastante rápida ya que esta está basada en typescript que generalmente es caracterizada ' +
-                                ' como una forma mas simple de javascript. Sin embargo su arquitectura hace que se quede corto en el rendimiento que puede dar, requiere de frameworks de terceros para funcionar.\n',
-                            style: TextStyle(
-                                fontSize: tamanhoTexto * 0.75,
-                                color: Colors.black),
-                          ),
-                        ],
-                      ),
-                    )),
-              ),
-            ]),
-          );
-          children.add(
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Container(
-                    width: width,
-                    child: RichText(
-                      softWrap: true,
-                      textAlign: TextAlign.center,
-                      text: new TextSpan(
-                        children: [
-                          new TextSpan(
-                            text: 'And React-Native?',
+                            text: 'Futures',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 fontWeight: FontWeight.bold,
@@ -204,7 +130,7 @@ class BlocState extends State<Bloc> {
                         children: [
                           new TextSpan(
                             text:
-                                'React fue una gran invención para web, al hacer que se manejara un DOM virtual y que la actualización de este DOM controlara en un modelo vista controlador al DOM real, reduce el número de elementos que se deben rerenderizar cuando se actualiza algo de la interfaz visual. React-Native funciona bajo el mismo principio.\n',
+                                'En Dart se usan varios tipos de sentencias asíncronas, los futures son la principal. Los futures se parecen mucho a las promesas de JavaScript y funcionan con la misma filosofía de representar el resultado de una operación asíncrona. Los futures se pueden castear a algún tipo como por ejemplo Future<String>. Cuando se llama una función con future retorna bien sea con éxito o con fracaso, estos son los únicos estados posibles para un future. Los futures de DART corren en el event loop  ',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
@@ -215,8 +141,18 @@ class BlocState extends State<Bloc> {
               ),
             ]),
           );
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: Image(image: AssetImage('images/futures.png'))),
+              ),
+            ]),
+          );
           children.add(SizedBox(
-            height: tamanhoTexto / 2,
+            height: tamanhoTexto,
           ));
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
@@ -224,13 +160,24 @@ class BlocState extends State<Bloc> {
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
                 child: Container(
                     width: width,
-                    child: Image(image: AssetImage('images/react.png'))),
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.center,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text: 'async await',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )),
               ),
             ]),
           );
-          children.add(SizedBox(
-            height: tamanhoTexto / 2,
-          ));
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               Padding(
@@ -243,13 +190,8 @@ class BlocState extends State<Bloc> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'Sin embargo pese a esto los problemas de rendimiento de React Native aparecen cuando se sobre utiliza el bridge y es que cuando se hacen' +
-                                ' animaciones o transiciones o se desliza el dedo sobre la pantalla internamente se intentará  acceder a los widgets del OEM(original equipment manufacturer) lo ' +
-                                'que va a causar que aparezcan cuellos de botella cuando se intenta pasar de un ámbito a otro.\n\nPor otro lado, si bien react-native tiene más adopción comparativamente con flutter, (lo que lo haria un mejor candidato para nuestro analisis),' +
-                                ' por parte de compañías prestigiosas, por ejemplo es usado por Facebook, Instagram, Pinterest, Skype, Tesla, Uber, Walmart, Salesforce, Vogue.  ' +
-                                'Lo cierto es que estuvo cultivando esta ventaja desde 2015 cuando fue lanzado, y sin embargo no la ha logrado mantener porque Flutter que ha principio ' +
-                                'del año 2019 su aplicación más notable era The Hamilton musical, ha logrado ganar tracción y ser usado por Alibaba, Greentea, Google Ads.\n\nEn conclusión la integración ' +
-                                'se hace necesaria en algunos contextos, hay una gran presión de los desarrolladores por herramientas que les faciliten la vida y Google puede haber dado con el clavo. ',
+                            text:
+                                'Deben ser usadas en conjunto con un future. La función await debe usarse para suspender la ejecución hasta que se complete un future. Para usar await se debe escribir dentro de una función que sea asíncrona.',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
@@ -261,7 +203,148 @@ class BlocState extends State<Bloc> {
             ]),
           );
           children.add(SizedBox(
-            height: tamanhoTexto / 2,
+            height: tamanhoTexto,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: Image(image: AssetImage('images/futures2.png'))),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.center,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text: 'Future vs Promises',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
+            ]),
+          );
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.justify,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text:
+                                'Muchos lengaujes como JAVA y SCALA hacen uso de ambas sentencias.De hecho son palabras reservadas que se usan en computación asíncrona en muchos lenguajes. El consenso es que cuando se desarrolle un lenguaje de programación FUTURE debe ser usado para hacer el consumo/llamadas mientras que cuando se haga uso de promesas estas se pueden usar tanto para consumir resultados de una operación asíncrona como para generar resultados de una computación asíncrona.',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.center,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text: 'Streams ',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
+            ]),
+          );
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: RichText(
+                      softWrap: true,
+                      textAlign: TextAlign.justify,
+                      text: new TextSpan(
+                        children: [
+                          new TextSpan(
+                            text:
+                                'Se usa cuando se tienen muchos valores que deben cargarse asíncronamente, esto porque se mantiene abierta una conexión a diferencia de lo que ocurrirá si se usara únicamente Future. Se pueden controlar los streams con las propiedades: listen, start, close, stop. Es importante usar close cuando el widget sea removido porque los streams continuaran corriendo incluso si el widget original ha sido cerrado',
+                            style: TextStyle(
+                                fontSize: tamanhoTexto * 0.75,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: Image(image: AssetImage('images/stream1.png'))),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto,
+          ));
+          children.add(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
+                child: Container(
+                    width: width,
+                    child: Image(image: AssetImage('images/stream2.png'))),
+              ),
+            ]),
+          );
+          children.add(SizedBox(
+            height: tamanhoTexto,
           ));
           children.add(
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
@@ -275,7 +358,7 @@ class BlocState extends State<Bloc> {
                             children: [
                               new TextSpan(
                                 text:
-                                    'https://codeburst.io/react-native-vs-ionic-vs-flutter-comparison-of-top-cross-platform-app-development-tools-71c8011309ac',
+                                    'https://alligator.io/flutter/futures-and-streams-dart/',
                                 style: new TextStyle(
                                     fontSize: tamanhoTexto * 0.5,
                                     color: Colors.blue,
@@ -284,7 +367,7 @@ class BlocState extends State<Bloc> {
                                   ..onTap = () {
                                     try {
                                       html.window.open(
-                                          "https://codeburst.io/react-native-vs-ionic-vs-flutter-comparison-of-top-cross-platform-app-development-tools-71c8011309ac",
+                                          "https://alligator.io/flutter/futures-and-streams-dart/",
                                           "_blank");
                                     } catch (error) {}
                                   },
@@ -310,7 +393,7 @@ class BlocState extends State<Bloc> {
                             children: [
                               new TextSpan(
                                 text:
-                                    'https://hackernoon.com/getting-started-with-cross-platform-app-development-in-2019-dd2bf7f6161b',
+                                    'https://medium.com/better-programming/futures-in-dart-582186ee75da',
                                 style: new TextStyle(
                                     fontSize: tamanhoTexto * 0.5,
                                     color: Colors.blue,
@@ -319,77 +402,7 @@ class BlocState extends State<Bloc> {
                                   ..onTap = () {
                                     try {
                                       html.window.open(
-                                          "https://hackernoon.com/getting-started-with-cross-platform-app-development-in-2019-dd2bf7f6161b",
-                                          "_blank");
-                                    } catch (error) {}
-                                  },
-                              ),
-                            ],
-                          ),
-                        ))),
-              ),
-            ]),
-          );
-          children.add(SizedBox(
-            height: tamanhoTexto / 2,
-          ));
-          children.add(
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Center(
-                    child: Container(
-                        width: width,
-                        child: RichText(
-                          text: new TextSpan(
-                            children: [
-                              new TextSpan(
-                                text:
-                                    'https://thehistoryoftheweb.com/the-story-of-flash/',
-                                style: new TextStyle(
-                                    fontSize: tamanhoTexto * 0.5,
-                                    color: Colors.blue,
-                                    decoration: TextDecoration.underline),
-                                recognizer: new TapGestureRecognizer()
-                                  ..onTap = () {
-                                    try {
-                                      html.window.open(
-                                          "https://thehistoryoftheweb.com/the-story-of-flash/",
-                                          "_blank");
-                                    } catch (error) {}
-                                  },
-                              ),
-                            ],
-                          ),
-                        ))),
-              ),
-            ]),
-          );
-          children.add(SizedBox(
-            height: tamanhoTexto / 2,
-          ));
-          children.add(
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Center(
-                    child: Container(
-                        width: width,
-                        child: RichText(
-                          text: new TextSpan(
-                            children: [
-                              new TextSpan(
-                                text:
-                                    'https://codeburst.io/react-native-vs-nativescript-vs-xamarin-vs-flutter-vs-ionic-vs-cordova-vs-pwas-196810954450',
-                                style: new TextStyle(
-                                    fontSize: tamanhoTexto * 0.5,
-                                    color: Colors.blue,
-                                    decoration: TextDecoration.underline),
-                                recognizer: new TapGestureRecognizer()
-                                  ..onTap = () {
-                                    try {
-                                      html.window.open(
-                                          "https://codeburst.io/react-native-vs-nativescript-vs-xamarin-vs-flutter-vs-ionic-vs-cordova-vs-pwas-196810954450",
+                                          "https://medium.com/better-programming/futures-in-dart-582186ee75da",
                                           "_blank");
                                     } catch (error) {}
                                   },

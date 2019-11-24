@@ -3,6 +3,7 @@ export './Dilema.dart';
 export './Competidores.dart';
 export './Google.dart';
 export './Dart.dart';
+export './Async.dart';
 export './LaApp.dart';
 export './Patrones.dart';
 export './Performance.dart';

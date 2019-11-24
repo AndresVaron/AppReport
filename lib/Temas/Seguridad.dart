@@ -16,7 +16,7 @@ class SeguridadState extends State<Seguridad> {
   InfoTema contador;
   int con;
   final String id = "seguridad";
-  final int index = 11; //TODO
+  final int index = 12;
   bool estabaOff = false;
 
   @override

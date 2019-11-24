@@ -16,7 +16,7 @@ class PatronesState extends State<Patrones> {
   InfoTema contador;
   int con;
   final String id = "patrones";
-  final int index = 7;
+  final int index = 8;
   bool estabaOff = false;
 
   @override

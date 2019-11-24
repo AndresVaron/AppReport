@@ -19,6 +19,7 @@ void main() async {
         id: "google",
         widget: new Google()),
     Tema(nombre: "Dart", id: "dart", widget: new Dart()),
+    Tema(nombre: "Async", id: "async", widget: new Async()),
     //Lo que falte..
     //TODO:
     Tema(nombre: "La App", id: "laapp", widget: new LaApp()),

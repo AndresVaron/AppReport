@@ -16,7 +16,7 @@ class ConclusionesState extends State<Conclusiones> {
   InfoTema contador;
   int con;
   final String id = "conclusiones";
-  final int index = 14; //TODO
+  final int index = 15;
   bool estabaOff = false;
 
   @override
@@ -189,7 +189,7 @@ class ConclusionesState extends State<Conclusiones> {
                             text: 'Con respecto a su versión web y los análisis hechos en este reporte, Flutter web está generando unas herramientas con una grande versatilidad, entre estas se encuentra la posibilidad' +
                                 ' de embeber una aplicación móvil completa dentro de un único elemento html en cualquier pagina web. Además, su facilidad de despliegue, cuando dart2js funciona bien, implica que en un futuro, cuando' +
                                 ' todo esté bien implementado, cualquier aplicación que se concentre en visualizar información podría ser desplegada como una PWA. Esto porque gracias a las herramientas que da Flutter, con tan solo implementar ' +
-                                'los features de ..., se puede generar una pwa{PWAs}.\n\nPese a que las PWAs podrían revolucionar la industria de las aplicaciones móviles, su compilación en lenguaje nativo nunca dejará de ser necesaria ' +
+                                'los features descritos en las secciones anteriores esta se puede considerar una PWA.\n\nPese a que las PWAs podrían revolucionar la industria de las aplicaciones móviles, su compilación en lenguaje nativo nunca dejará de ser necesaria ' +
                                 'ya que los browsers tienen grandes limitaciones, especialmente con respecto a los sensores y la privacidad. Sin embargo, a pesar de que esto puede limitar un poco los features que se pueden implementar,' +
                                 ' el hecho de que una app se pueda desplegar como una PWA le garantiza al usuario final muchos de los aspectos de seguridad que traen los browsers. Por estas razones consideramos que en un futuro, ' +
                                 ' herramientas como flutter web podrán ser de gran utilidad para atraer usuarios, ya que eso les permitirá a las empresas llegar a los usuario sin que ellos tengan que ultrapasar ' +
