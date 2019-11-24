@@ -139,7 +139,7 @@ class AlmacenamientoState extends State<Almacenamiento> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'Además, en estas imágenes se puede observar que es utilizó la libreria de shared_preferences para el almacenamiento en las nativas. Lo ideal sería que en un futuro Flutter le ' +
+                            text: 'Además, en estas imágenes se puede observar que se uso la libreria de shared_preferences para el almacenamiento en las versiones nativas. Lo ideal sería que en un futuro Flutter le ' +
                                 'implemente a shared_preferences el manejo del cache del browser ya que las dos cosas consisten en guardar una tupla (llave,valor) en la memoria del dispositivo.' +
                                 'Para esta ocasión se utilizo local_storage en el browser ya que esta es la manera que mas tiempo dura guardada en el browser.\n\n Es importante notar que para esto fue necesario utilizar la libreria de dart:html que nos permite manipular los componentes de una pagina web. ' +
                                 'En un futuro, esto no se debería poder hacer, ya que esto implica que se ramifique el código de la aplicación en sus respectivos formatos(web,móvil,etc).', //Problemas de html y hablar de la bd
@@ -171,7 +171,7 @@ class AlmacenamientoState extends State<Almacenamiento> {
                             text: 'Por otro lado, para facilitar el acceso a la información, se creo una pequeña base de datos de contadores a la cual la aplicación accede para aumentar los contadores y preguntar el ' +
                                 'estado de estos. Esta base de datos se puede encontrar en un spreadsheet de google drive.Cualquiera puede acceder a esta y verificar que si está conectada con la aplicación.' +
                                 '\n\nConsecuentemente, al hablar de almacenamiento es importante tener en cuenta de que al instalarla en un dispositivo las imágenes del documento se van junto.' +
-                                ' Mientras que en la pagina estas quedan guardadas en el servidor que y el almacenamiento de estas sobre el dispositivo depende plenamente del navegador.' +
+                                ' Mientras que en la página estas quedan guardadas en el servidor que y el almacenamiento de estas sobre el dispositivo depende plenamente del navegador.' +
                                 '\n\nFinalmente, cabe notar que a pesar de que Chrome móvil tiene una opción de guardar la pagina para su uso offline la mayoría de las funcionalidades se pierden junto con los' +
                                 ' iconos de flutter.',
                             style: TextStyle(
