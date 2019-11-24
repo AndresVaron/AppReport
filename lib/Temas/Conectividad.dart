@@ -81,7 +81,7 @@ class ConectividadState extends State<Conectividad> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'Como se indicó en las secciones anteriores, el feature de los contadores cuenta con conectividad eventual. Esto implica que las acciones que haga' +
+                            text: 'Como se indicó en las secciones anteriores, el feature de los contadores cuenta con conectividad eventual, tanto en el despliegue web como movil. Esto implica que las acciones que haga' +
                                 ' el usuario en el navegador se guardan y se hacen cuando haga algo con internet. El usuario podría acceder a la pagina, entrar a un ascensor donde perdería' +
                                 ' la señal, darle ups a algunos temas, y al salir, podría seguir utilizándola sin ningún problema. Esto se debe a la utilización de la memoria destacada en la sección' +
                                 ' anterior. Además, en el momento de refrescar los "Ups" cuando no hay internet se sigue la convención de material design informándole al usuario con la utilización' +
