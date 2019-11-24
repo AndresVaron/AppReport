@@ -21,7 +21,6 @@ class FlutterState extends State<Flutter> {
 
   @override
   Widget build(BuildContext context) {
-    load();
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
@@ -200,6 +199,7 @@ class FlutterState extends State<Flutter> {
         con = contador.contador + contador.contadorTemp;
       });
     } catch (error) {}
+    load();
   }
 
   add() async {
