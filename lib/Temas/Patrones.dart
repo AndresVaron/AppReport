@@ -82,7 +82,7 @@ class PatronesState extends State<Patrones> {
                                 'que maneja toda la lógica de los "Ups" de la aplicación. Cómo se destacara posteriormente, debido a errores en la libreria dart2js fue necesario ' +
                                 'implementar una versión de la app sin el BLoC para el despliegue en web tal que cada vista maneja la lógica de sus "Ups", con esto, se pierde el feature mas importante del bloc, lograr centralizar toda la lógica.' +
                                 'Muchas veces este patrón se utiliza simplemente para mejorar la calidad del código desarrollado. En esta aplicación no es así, el bloc nos permite manejar el cache de los "Ups" en un solo lugar, tal que en el caso de ' +
-                                ' que la conexión a internet regrese luego de hacer un "Up" offline, cualquier acción por el usuario actualiza el cache de todas las secciones. Mientras que, como se puede observar en la pagina, solo acciones en la misma vista actualización su cache.\n',
+                                ' que la conexión a internet regrese luego de hacer un "Up" offline, cualquier acción por el usuario actualiza el cache de todas las secciones. Mientras que, como se puede observar en la pagina, solo acciones en la misma vista realizan la actualización su cache.\n',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
