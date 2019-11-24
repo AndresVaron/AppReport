@@ -78,7 +78,7 @@ class RoadBLOCksState extends State<RoadBLOCks> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'Por el transcurso del la fase de desarrollo de esta aplicación, nosotros nos topamos con múltiples impedimentos.' +
+                            text: 'Por el transcurso del la fase de desarrollo de esta aplicación, se encontraron múltiples impedimentos.' +
                                 ' Entre estos estaban los que esperábamos, como la falta de soporte a los plugins oficiales',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
@@ -127,8 +127,8 @@ class RoadBLOCksState extends State<RoadBLOCks> {
                           new TextSpan(
                             text: 'Este snippet se utiliza para indicar que la app tiene la orientación restringida y funciona tanto en Android como en iOS, ' +
                                 'por lo que fue inesperado que al incluirlo en nuestro código la pagina web no compilara. Esto es importante notarlo ya que en algunas ocasiones, dependiendo' +
-                                ' si la librería utilizada era de dart o flutter podrían salir errores diferentes tal como el de la imagen a seguir, que indica la la utilización de la función lookup() ' +
-                                '(de dart:io) la cual hace un nslookup , algo que no se puede hacer desde un browser.',
+                                ' si la librería utilizada era de dart o flutter podrían salir errores diferentes tal como el que se ve soluciona por el codigo visto en la imagen siguiente, que indica la utilización de la función lookup() ' +
+                                '(de dart:io) la cual hace un nslookup, algo que no se puede hacer desde un browser.',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
@@ -167,9 +167,9 @@ class RoadBLOCksState extends State<RoadBLOCks> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'Además de estos problemas, los cuales se pueden consideran inofensivos ya que con tiempo se pueden implementar, se encontraron unos muchos complicados de entender y arreglar. ' +
-                                ' Estos son errores que solo logramos encontrar en el momento de hacerle el build de despliegue a la aplicación, ya que utilizando las herramientas de desarrollo de flutter web no se lograron encontrar. ' +
-                                ' Primero, esta el problema de los imports que se puede observar en la imagen a seguir.',
+                            text: 'Además de estos problemas, los cuales se pueden consideran inofensivos ya que con tiempo se pueden implementar soluciones, se encontraron unos mucho más complicados de entender y arreglar. ' +
+                                ' Estos son errores que solo logramos se descubrieron en el momento de hacerle el build de despliegue a la aplicación, ya que utilizando las herramientas de desarrollo de flutter web no se lograron encontrar. ' +
+                                ' Primero, esta el problema de los imports que se puede observar en la imagen siguiente.',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
@@ -206,13 +206,13 @@ class RoadBLOCksState extends State<RoadBLOCks> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'En este que ocurre al mandarle un parámetro al constructor de un widget un una clase diferente, indica que,en este caso, espera una lista de tipo Tema pero recibe una lista de tipo Tema' +
-                                '. Como se puede observar, la corrección no es para nada trivial ya que el problema está en que en un archivo la libreria(archivo main.dart) en la cual está la clase Tema se importa como \"lib/main.dart\" mientras que en el otro esta se importa como \"package:appreport/main.dart\". ' +
+                            text: 'Este roadBlock ocurre al mandarle un parámetro al constructor de un widget una clase diferente, indica que se espera una lista de tipo Tema pero recibe una lista de tipo Tema' +
+                                '. Como se puede observar, la corrección no es para nada trivial ya que el problema está en que en un archivo la librería(archivo main.dart) en la cual está la clase Tema se importa como \"lib/main.dart\" mientras que en el otro esta se importa como \"package:appreport/main.dart\". ' +
                                 ' Esto ocurre porque al parecer en el momento de generar el build de despliegue las referencias a las librerías tienen que ser idénticas a pesar de que en las herramientas de desarrollo y en las otras plataformas si pueden escribirse de maneras distintas mientras que apunten al mismo archivo. ' +
                                 'Lo irónico de todo es que el propio mensaje de error indica, entre comillas, que las librerías apuntan al mismo lugar (\"lib/main.dart\").\n\n' +
-                                'Finalmente, el mayor roadBLOCk de todos los que nos encontramos al desarrollar esta aplicación, los BLOCs. A pesar de que es un patrón increíble ya que le permite centralizar toda la lógica de la aplicación en unas pocas clases, la compilación de dart a  javascript por parte de el equipo de flutter de los' +
-                                'stream builders aun no funciona bien. Como se denotó en la sección donde se analiza esta compilación, la entrada y salida de los streams si funciona perfectamente, y en las herramientas de desarrollo todo funcionan como si se estuviera programando para cualquier plataforma. El lio, como con los imports, está en el momento de generar el build de despliegue ya que, ' +
-                                'a pesar de que se lograr compilar todo, al entrar a la pagina web la aplicación no logra encontrar los métodos de los objetos que representan los blocs en la aplicación y se terminan generando infinitos null pointers cuando un widget intenta hacer build().' +
+                                'Finalmente, el mayor roadBLOCk de todos los que nos encontramos al desarrollar esta aplicación, los BLOCs. A pesar de que es un patrón increíble ya que le permite centralizar toda la lógica de la aplicación en unas pocas clases, la compilación de dart a javascript por parte del equipo de flutter de los' +
+                                'stream builders aun no funciona bien. Como se denotó en la sección donde se analiza esta compilación, la entrada y salida de los streams si funciona perfectamente, y en las herramientas de desarrollo todo funciona como si se estuviera programando para cualquier plataforma. El lio, como con los imports, está en el momento de generar el build de despliegue ya que, ' +
+                                'a pesar de que se logre compilar todo, al entrar a la pagina web la aplicación no logra encontrar los métodos de los objetos que representan los blocs en la aplicación y se terminan generando infinitos null pointers cuando un widget intenta hacer build().' +
                                 '\n\nDebido a este problema con los blocs y la restricción de tiempo para la entrega de este proyecto decidimos quitar el BLOC para el despliegue de la pagina web. Con este cambio, al ingresar a la pagina cada widget maneja el estado de su contador y acceso a internet. Es importante notar que el único feature que no terminó siendo desplegado en la pagina es el de que una acción en ' +
                                 ' cualquiera de las secciones actualiza el servidor con el cache de todos los otros temas. Esto si funciona en navegador con el servidor de desarrollo y en la aplicación nativa',
                             style: TextStyle(
