@@ -81,12 +81,12 @@ class SeguridadState extends State<Seguridad> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: 'Dado que esta aplicación solo mas que todo consiste en información estática para el lector, por ese lado no fue necesario implementar seguridad. ' +
-                                'El único punto de acceso al cual se podría dañar su funcionalidad es la base de datos, pero dado que se hacen las verificaciones necesarias al ' +
+                            text: 'Dado que esta aplicación principalmente consiste en información estática para el lector, se reducen los feautures de seguridad que se deben implementar. ' +
+                                'El único punto de acceso al cual se le podría dañar su funcionalidad es la base de datos, pero dado que se hacen las verificaciones necesarias al ' +
                                 'momento de hacer las peticiones esto no puede ocurrir. Además, debido a que se utilizan los servidores de Google es poco probable que alguien logre ' +
                                 'tumbar el servidor. Por otro lado, en el caso de que se llegara a caer, la utilización del cache le permite al usuario continuar usando la aplicación sin ' +
-                                'ningún problema. Además, el hecho de que la pagina este hostiada en github pages nos permite utilizar el protocolo https por el cual se obtienen aun mas ' +
-                                'medidas de seguridad como el uso de SSL.\n\nEn las imágenes a seguir se encuentra el código de configuración del api junto con el de las peticiones que se hacen cuando se desea/refrescar actualiza la información. ',
+                                'ningún problema. Además, el hecho de que la pagina este hosteada en github pages nos permite utilizar el protocolo https por el cual se obtienen aun mas ' +
+                                'medidas de seguridad como el uso de SSL.\n\nEn las imágenes a seguir se encuentra el código de configuración del API junto con el de las peticiones que se hacen cuando se desea/refrescar actualiza la información. ',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
@@ -139,7 +139,7 @@ class SeguridadState extends State<Seguridad> {
                         children: [
                           new TextSpan(
                             text: 'Finalmente, un aspecto importante de la seguridad en flutter es el hecho de que esta en technical preview y se ' +
-                                'desarrollo la aplicación en el branch de developers esto probablemente genere varias fallas de seguridad que aun no han encontrado/parchado.  ',
+                                'desarrollo la aplicación en el branch de developers esto probablemente genere varias fallas de seguridad que aun no han encontrado/parchado pero que no dependen del desarrollador, en la sección de PWA se detallan y se dan referencias sobre la seguridad que deberia tener Flutter Web.  ',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
