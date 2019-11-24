@@ -209,7 +209,7 @@ class PerformanceState extends State<Performance> {
                 padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
                 child: Container(
                     width: width,
-                    child: Image(image: AssetImage('images/cpumovil.jpeg'))),
+                    child: Image(image: AssetImage('images/cpumovil.jpg'))),
               ),
             ]),
           );
@@ -367,7 +367,7 @@ class PerformanceState extends State<Performance> {
                                 'Luego, en el paso 3 se puede ver como se actualiza la interfaz rápidamente al scrollear la aplicación. Y en el paso 5 se muestra el procesamiento necesario para actualizar el contador y la animación de click del action button al hacer los 5 ups consecutivos.' +
                                 'Finalmente, se puede ver como la apertura de la nueva sección con su respectivo scroll consumen una grande cantidad de procesamiento. Es importante detallar que el procesamiento de renderización se hace en el momento que se genera la acción. Este grande consumo de cpu al scrollear se debe a que aun no esta bien optimizado. Según algunos participantes en los foros de desarrollo de flutter,' +
                                 'Como en las aplicaciones nativas es importante renderizar únicamente lo que se muestra en pantalla, mientras que en html se encarga el browser, el código generado por dart2js también intenta hacer lo mismo haciendo que cada vez que se tenga que volver a renderizar o pintar alguno componente de la aplicación se vuelva a procesar una grande cantidad de información.' +
-                                ' Además, el pico demarcado por un * indica el momento donde se cargaron los gifs de la sección de RoadBLOCks tal que, como se podrá ver mejor en el análisis de memoria, estos se descargan únicamente en el momento que aparecen en la pantalla.\n\nAntes de analizar el perfilamiento de memoria cabe resaltar que para replicar correctamente la descarga de los componentes necesarios se borró el cache de google chrome como se puede observar en la imagen a seguir y se realizo todo el proceso en un tab incognito. ',
+                                ' Además, el pico demarcado por un * indica el momento donde se cargaron los gifs de la sección de RoadBLOCks tal que, como se podrá ver mejor en el análisis de memoria, estos se descargan únicamente en el momento que aparecen en la pantalla.\n\nAntes de analizar el perfilamiento de memoria cabe resaltar que para replicar correctamente la descarga de los componentes necesarios se borró el cache de google chrome y se realizo todo el proceso en un tab incognito. ',
                             style: TextStyle(
                                 fontSize: tamanhoTexto * 0.75,
                                 color: Colors.black),
@@ -382,16 +382,6 @@ class PerformanceState extends State<Performance> {
             height: tamanhoTexto / 2,
           ));
 
-          children.add(
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: sidePadding, right: sidePadding),
-                child: Container(
-                    width: width,
-                    child: Image(image: AssetImage('images/cache.jpeg'))),
-              ),
-            ]),
-          );
           children.add(SizedBox(
             height: tamanhoTexto / 2,
           ));
